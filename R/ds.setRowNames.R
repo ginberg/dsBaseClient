@@ -82,7 +82,7 @@ ds.setRowNames = function(x=NULL, rownames=NULL, newobj=NULL, datasources=NULL) 
   # call the server side function and doo the replacement for each server
   for(i in 1:length(datasources)){
     message(paste0("--Processing ", names(datasources)[i], "..."))
-    cally <- paste0("rownamesDS(", x, ",", rownames, ")")
+    cally <- paste0("setRowNamesDS(", x, ",", rownames, ")")
     print(cally)
     datashield.assign(datasources[i], newobj, as.symbol(cally))
     
