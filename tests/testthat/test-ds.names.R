@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("dsbaseclient::ds.names")
+context("dsBaseClient::ds.names")
 
 options(datashield.variables=list("DIS_DIAB","PM_BMI_CONTINUOUS","LAB_HDL", "GENDER"))
 source("setup.R")
@@ -21,14 +21,20 @@ source("setup.R")
 # Tests
 #
 
-context("dsbaseclient::ds.names()")
+context("dsBaseClient::ds.names() test errors")
+ds.asCharacter(x='D$GENDER', newobj="not_a_list")
+test_that("names_erros", {
+    expect_error(ds.names(), "Please provide the name of the input list!", fixed=TRUE)
+    expect_error(ds.names('not_a_list'), "The input object must be a list.", fixed=TRUE)
+})
 
-ds.subclass(datasources=opals, subsets='subclasses', data='D')
-names <- ds.names(opals, 'subclasses')
-#print(names$sim1)
 
+context("dsBaseClient::ds.names()")
+
+ds.subsetByClass(datasources=opals, subsets='subclasses', x='D')
+names <- ds.names('subclasses')
 expected_names <- c("DIS_DIAB.level_0", "DIS_DIAB.level_1", "GENDER.level_0",   "GENDER.level_1")
-test_that("level names", { 
+test_that("level_names", {
   expect_equal(length(names), 3)
   expect_equal(length(names$sim1), 4)
   expect_equal(names$sim1, expected_names)
@@ -37,6 +43,8 @@ test_that("level names", {
   expect_equal(length(names$sim3), 4)
   expect_equal(names$sim3, expected_names)
 })
+
+
 
 
 #

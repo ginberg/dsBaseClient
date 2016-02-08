@@ -8,25 +8,4 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #-------------------------------------------------------------------------------
 
-#
-# Set up
-#
-
-options(datashield.variables=list("LAB_TSC","GENDER"))
-context("dsbaseclient::ds.asList")
-
-source("setup.R")
-
-#
-# Tests
-#
-
-context("dsbaseclient::ds.asList() turn the data frame D into a list")
-ds.asList(datasources=opals, x=quote(D))
-# TODO do more than a smoke test
-
-#
-# Tear down
-#
-
-source("teardown.R")
+opal::datashield.logout(opals)

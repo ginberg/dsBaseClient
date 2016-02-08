@@ -24,7 +24,8 @@
 #' 
 #'   # load that contains the login details
 #'   data(logindata)
-#' 
+#'   library(opal)
+#'
 #'   # login and assign all the stored variable(s)
 #'   # (by default the assigned dataset is a dataframe named 'D')
 #'   opals <- datashield.login(logins=logindata,assign=TRUE)
@@ -56,7 +57,7 @@ ds.asList = function(x=NULL, newobj=NULL, datasources=NULL){
   
   # Only a dataframe or a matrice can be turned into a list
   if(typ != 'data.frame' & typ != 'matrix'){
-    stop(" Only objects of type 'data.frame' or 'matrix' are allowed. Please see documentation.", call.=FALSE)
+    stop("Only objects of type 'data.frame' or 'matrix' are allowed. Please see documentation.", call.=FALSE)
   }
   
   # the input variable might be given as column table (i.e. D$x)
@@ -72,7 +73,7 @@ ds.asList = function(x=NULL, newobj=NULL, datasources=NULL){
   
   # call the server side function that does the job
   cally <- paste0("asListDS(", x, ")")
-  datashield.assign(datasources, newobj, as.symbol(cally))
+  opal::datashield.assign(datasources, newobj, as.symbol(cally))
   
   # check that the new object has been created and display a message accordingly
   finalcheck <- isAssigned(datasources, newobj)
