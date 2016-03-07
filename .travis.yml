@@ -11,16 +11,16 @@ before_install:
     - sudo apt-get install -qq puppet-agent -y
     - sudo apt-get install -qq git -y
     - sudo /opt/puppetlabs/puppet/bin/gem install r10k
-    - git clone https://github.com/nparley/datashield.git /tmp/datashield
-    - cd /tmp/datashield/puppet/environments/travis && sudo /opt/puppetlabs/puppet/bin/r10k puppetfile install && cd -
-    - sudo /opt/puppetlabs/bin/puppet apply /tmp/datashield/puppet/environments/travis/manifests/site.pp --environment travis --environmentpath /tmp/datashield/puppet/environments
+    - git clone https://github.com/datashield/datashield-infrastructure.git /tmp/datashield-infrastructure
+    - cd /tmp/datashield-infrastructure/puppet/environments/datashield_travis && sudo /opt/puppetlabs/puppet/bin/r10k puppetfile install && cd -
+    - sudo /opt/puppetlabs/bin/puppet apply /tmp/datashield-infrastructure/puppet/environments/datashield_travis/manifests/site.pp --environment datashield_travis --environmentpath /tmp/datashield-infrastructure/puppet/environments
 
 script:
     - sudo ./travis-tool.sh install_github jimhester/covr
     - ./travis-tool.sh run_tests
 
 after_failure:
-    - ./travis-tool.sh dump_logs
+    - sudo ./travis-tool.sh dump_logs
     - sudo cat /var/log/opal/stdout.log
 
 notifications:
