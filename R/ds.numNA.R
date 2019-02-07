@@ -11,7 +11,7 @@
 #' @return for an array, \code{NULL} or a vector of mode \code{integer}
 #' @author Gaye, A.
 #' @export
-#' @examples {
+#' @examples \dontrun{
 #' 
 #'   # load that contains the login details
 #'   data(logindata)
@@ -38,7 +38,7 @@ ds.numNA = function(x=NULL, datasources=NULL) {
   
   # if no opal login details are provided look for 'opal' objects in the environment
   if(is.null(datasources)){
-    datasources <- findLoginObjects()
+    datasources <- DSI::findDSConnections()
   }
   
   if(is.null(x)){
@@ -55,7 +55,7 @@ ds.numNA = function(x=NULL, datasources=NULL) {
 
   # call the server side function
   cally <- paste0("numNaDS(", x, ")")
-  numNAs <- datashield.aggregate(datasources, as.symbol(cally))
+  numNAs <- DSI::datashield.aggregate(datasources, as.symbol(cally))
   
   return(numNAs)
 }

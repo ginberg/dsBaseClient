@@ -9,7 +9,7 @@
 #' @author Gaye, A.; Isaeva, J.
 #' @seealso \link{ds.exists} to verify if an object is defined (exists) on the server side.
 #' @export
-#' @examples {
+#' @examples \dontrun{
 #' 
 #'   # load that contains the login details
 #'   data(logindata)
@@ -33,7 +33,7 @@ ds.class <- function(x=NULL, datasources=NULL) {
   
   # if no opal login details are provided look for 'opal' objects in the environment
   if(is.null(datasources)){
-    datasources <- findLoginObjects()
+    datasources <- DSI::findDSConnections()
   }
   
   if(is.null(x)){
@@ -44,7 +44,7 @@ ds.class <- function(x=NULL, datasources=NULL) {
   defined <- isDefined(datasources, x)
   
   cally <- paste0('class(', x, ')')
-  output <- datashield.aggregate(datasources, as.symbol(cally))
+  output <- DSI::datashield.aggregate(datasources, as.symbol(cally))
   
   return(output)
 

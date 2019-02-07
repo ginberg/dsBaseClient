@@ -20,11 +20,11 @@
 #' @seealso \link{ds.asCharacter} to turn a variable into a character type.
 #' @seealso \link{ds.asMatrix} to coerce an object into a matrix type.
 #' @export
-#' @examples {
-#' 
+#' @examples \dontrun{
+#'   library(DSI)
 #'   # load that contains the login details
 #'   data(logindata)
-#' 
+#'   
 #'   # login and assign all the stored variable(s)
 #'   # (by default the assigned dataset is a dataframe named 'D')
 #'   opals <- datashield.login(logins=logindata,assign=TRUE)
@@ -34,14 +34,13 @@
 #' 
 #'   # clear the Datashield R sessions and logout
 #'   datashield.logout(opals)
-#' 
 #' }
 #' 
 ds.asList = function(x=NULL, newobj=NULL, datasources=NULL){
   
   # if no opal login details are provided look for 'opal' objects in the environment
   if(is.null(datasources)){
-    datasources <- findLoginObjects()
+    datasources <- DSI::findDSConnections()
   }
   
   if(is.null(x)){
@@ -72,7 +71,7 @@ ds.asList = function(x=NULL, newobj=NULL, datasources=NULL){
   
   # call the server side function that does the job
   cally <- paste0("asListDS(", x, ")")
-  datashield.assign(datasources, newobj, as.symbol(cally))
+  DSI::datashield.assign(datasources, newobj, as.symbol(cally))
   
   # check that the new object has been created and display a message accordingly
   finalcheck <- isAssigned(datasources, newobj)

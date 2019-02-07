@@ -8,11 +8,11 @@
 #' @param obj a string character, the name of the object to check for.
 #' @keywords internal
 #' @return a message or the class of the object if the object has the same class in all studies.
-#'
+#' @import DSI
 checkClass <- function(datasources=NULL, obj=NULL){
   # check the class of the input object
   cally <- paste0("class(", obj, ")")
-  objtype <- unique(unlist(datashield.aggregate(datasources, cally)))
+  objtype <- unique(unlist(DSI::datashield.aggregate(datasources, cally)))
   if(length(objtype) > 1){
     message("The input data is not of the same class in all studies!")
     message("Use the function 'ds.class' to verify the class of the input object in each study.")

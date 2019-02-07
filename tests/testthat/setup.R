@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# Copyright (c) 2014 OBiBa. All rights reserved.
+# Copyright (c) 2019 OBiBa. All rights reserved.
 #  
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,8 +12,9 @@
 # Datashield test suite set up
 #
 
-#library(dsbaseclient)
-#library(testthat)
+library(DSOpal)
+library(dsBaseClient)
+library(testthat)
 
 options(verbose=FALSE)
 
@@ -21,14 +22,14 @@ options(opal.username='administrator',
         opal.password='password')
 
 options(opal.url='http://localhost:8080')
-#options(opal.url='http://demo.obiba.org:8080')
+#options(opal.url='https://opal-demo.obiba.org')
 
 server <- c("sim1", "sim2", "sim3")
 url <- c(getOption("opal.url"), getOption("opal.url"), getOption("opal.url"))
 user <- c(getOption("opal.username"), getOption("opal.username"), getOption("opal.username"))
 password <- c(getOption("opal.password"), getOption("opal.password"), getOption("opal.password"))
-table <- c("CNSIM.CNSIM1", "CNSIM.CNSIM2", "CNSIM.CNSIM3")
+table <- c("datashield.CNSIM1", "datashield.CNSIM2", "datashield.CNSIM3")
 logindata <- data.frame(server,url,user,password,table)
 
-opals <- opal::datashield.login(logins=logindata,assign=TRUE,variables=getOption("datashield.variables", NULL))
+opals <- datashield.login(logins=logindata,assign=TRUE,variables=getOption("datashield.variables", NULL))
 

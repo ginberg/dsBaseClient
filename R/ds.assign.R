@@ -2,7 +2,7 @@
 #' @title Assigns an object to a name in the server side
 #' @description This function assigns a datashield object to a name, hence creating a new object. 
 #' It also calls 'assign' server side functions to generate objects stored on the server side.
-#' The function is a wrapper for the 'opal' package function 'datashield.assign'.
+#' The function is a wrapper for the 'opal' package function 'DSI::datashield.assign'.
 #' @details The new object is stored on the remote R instance (i.e. on the server side).
 #' If no name is provided, the new object is named 'newObject', by default.
 #' @param toAssign a string character, the object to assign or the call to an assign function 
@@ -13,7 +13,7 @@
 #' @return nothing is returned to the client, the new object is stored on the server side.
 #' @author Gaye, A.
 #' @export
-#' @examples {
+#' @examples \dontrun{
 #' 
 #'   # load that contains the login details
 #'   data(logindata)
@@ -38,7 +38,7 @@ ds.assign <- function(toAssign=NULL, newobj="newObject", datasources=NULL){
   
   # if no opal login details are provided look for 'opal' objects in the environment
   if(is.null(datasources)){
-    datasources <- findLoginObjects()
+    datasources <- DSI::findDSConnections()
   }
   
   if(is.null(toAssign)){
@@ -46,7 +46,7 @@ ds.assign <- function(toAssign=NULL, newobj="newObject", datasources=NULL){
   }
   
   # now do the business
-  datashield.assign(datasources, newobj, as.symbol(toAssign))
+  DSI::datashield.assign(datasources, newobj, as.symbol(toAssign))
   
   # check that the new object has been created and display a message accordingly
   finalcheck <- isAssigned(datasources, newobj)

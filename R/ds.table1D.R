@@ -29,7 +29,7 @@
 #' @author Gaye, A.; Burton, P.
 #' @seealso \link{ds.table2D} for cross-tabulating two vectors.
 #' @export
-#' @examples {
+#' @examples \dontrun{
 #' 
 #'   # load the file that contains the login details
 #'   data(logindata)
@@ -65,7 +65,7 @@ ds.table1D <- function(x=NULL, type='combine', warningMessage=TRUE, datasources=
   
   # if no opal login details are provided look for 'opal' objects in the environment
   if(is.null(datasources)){
-    datasources <- findLoginObjects()
+    datasources <- DSI::findDSConnections()
   }
   
   if(is.null(x)){
@@ -95,7 +95,7 @@ ds.table1D <- function(x=NULL, type='combine', warningMessage=TRUE, datasources=
   
   # call the server side function that produces a 1-dimensional table for each study
   cally <- paste0("table1dDS(", x, ")")
-  output <- datashield.aggregate(datasources, as.symbol(cally))
+  output <- DSI::datashield.aggregate(datasources, as.symbol(cally))
   
   # extract contingency (count) tables and validity information for each study
   countTables <- vector("list", length(stdnames))

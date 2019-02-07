@@ -9,7 +9,7 @@
 #' @author Gaye, A.; Isaeva, J.
 #' @seealso \link{ds.dim} to obtain the dimensions of matrix or a data frame.
 #' @export
-#' @examples {
+#' @examples \dontrun{
 #' 
 #'   # load that contains the login details
 #'   data(logindata)
@@ -30,7 +30,7 @@ ds.colnames <- function(x=NULL, datasources=NULL) {
   
   # if no opal login details are provided look for 'opal' objects in the environment
   if(is.null(datasources)){
-    datasources <- findLoginObjects()
+    datasources <- DSI::findDSConnections()
   }
   
   if(is.null(x)){
@@ -49,7 +49,7 @@ ds.colnames <- function(x=NULL, datasources=NULL) {
   }
   
   cally <- paste0("colnames(", x, ")")
-  column_names <- datashield.aggregate(datasources, cally)
+  column_names <- DSI::datashield.aggregate(datasources, cally)
   
   return(column_names)
 

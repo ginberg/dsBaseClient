@@ -16,7 +16,7 @@
 #' @seealso \link{ds.asMatrix} to coerce an object into a matrix type.
 #' @seealso \link{ds.dim} to obtain the dimensions of matrix or a data frame.
 #' @export
-#' @examples {
+#' @examples \dontrun{
 #' 
 #'   # load the file that contains the login details
 #'   data(logindata)
@@ -41,7 +41,7 @@ ds.cbind <- function(x=NULL, newobj='newCbindObject', datasources=NULL){
 
   # if no opal login details are provided look for 'opal' objects in the environment
   if(is.null(datasources)){
-    datasources <- findLoginObjects()
+    datasources <- DSI::findDSConnections()
   }
   
   # if not more than one input objects stop 
@@ -58,7 +58,7 @@ ds.cbind <- function(x=NULL, newobj='newCbindObject', datasources=NULL){
       }else{
         defined <- isDefined(datasources, inputElts[[1]])
         cally <- paste0("colnames(", inputElts[[1]], ")")
-        column_names <- unique(unlist(datashield.aggregate(datasources, cally)))
+        column_names <- unique(unlist(DSI::datashield.aggregate(datasources, cally)))
         if(!(inputElts[[2]] %in% column_names)){
           stop(paste0("No variable ",inputElts[[2]]," in ", inputElts[[1]], " in one or more studies"), call.=FALSE)
         }
@@ -68,7 +68,7 @@ ds.cbind <- function(x=NULL, newobj='newCbindObject', datasources=NULL){
   
   # call the server side function
   cally <-  paste0("cbind(", paste(x,collapse=","), ")")
-  datashield.assign(datasources, newobj, as.symbol(cally)) 
+  DSI::datashield.assign(datasources, newobj, as.symbol(cally)) 
   
   # check that the new object has been created and display a message accordingly
   finalcheck <- isAssigned(datasources, newobj)

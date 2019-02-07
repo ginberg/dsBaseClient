@@ -14,7 +14,7 @@
 #' environment of the remote opal server.
 #' @author Gaye, A.
 #' @export
-#' @examples {
+#' @examples \dontrun{
 #' 
 #'   # load the file that contains the login details
 #'   data(logindata)
@@ -38,12 +38,12 @@ ds.ls <- function(datasources=NULL){
   
   # if no opal login details are provided look for 'opal' objects in the environment
   if(is.null(datasources)){
-    datasources <- findLoginObjects()
+    datasources <- DSI::findDSConnections()
   }
   
   # call the server side function that does the job
   cally <- call("ls")
-  output <- datashield.aggregate(datasources, cally)
+  output <- DSI::datashield.aggregate(datasources, cally)
   
   return(output)
 }

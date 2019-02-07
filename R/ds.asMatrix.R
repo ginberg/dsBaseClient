@@ -16,7 +16,7 @@
 #' @seealso \link{ds.asCharacter} to turn a variable into a character type.
 #' @seealso \link{ds.asList} to construct an object of type list.
 #' @export
-#' @examples {
+#' @examples \dontrun{
 #' 
 #'   # load that contains the login details
 #'   data(logindata)
@@ -37,7 +37,7 @@ ds.asMatrix = function(x=NULL, newobj=NULL, datasources=NULL){
   
   # if no opal login details are provided look for 'opal' objects in the environment
   if(is.null(datasources)){
-    datasources <- findLoginObjects()
+    datasources <- DSI::findDSConnections()
   }
   
   if(is.null(x)){
@@ -68,7 +68,7 @@ ds.asMatrix = function(x=NULL, newobj=NULL, datasources=NULL){
   
   # call the server side function that does the job
   cally <- paste0("asMatrixDS(", x, ")")
-  datashield.assign(datasources, newobj, as.symbol(cally))
+  DSI::datashield.assign(datasources, newobj, as.symbol(cally))
   
   # check that the new object has been created and display a message accordingly
   finalcheck <- isAssigned(datasources, newobj)

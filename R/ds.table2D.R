@@ -32,7 +32,8 @@
 #' @author Gaye, A.; Burton, P.
 #' @seealso \link{ds.table1D} for the tabulating one vector.
 #' @export
-#' @examples {
+#' @examples 
+#' \dontrun{
 #' 
 #'   # load the file that contains the login details
 #'   data(logindata)
@@ -40,9 +41,10 @@
 #'   # login and assign all the variables to R
 #'   opals  <-  datashield.login(logins=logindata,assign=TRUE)
 #' 
-#'   # Example 1: generate a two dimensional table, outputting combined contingency tables - default behaviour
+#'   # Example 1: generate a two dimensional table, outputting combined contingency tables
 #'   output <- ds.table2D(x='D$DIS_DIAB', y='D$GENDER')
-#'   # display the 5 results items, one at a time to avoid having too much information displayed at the same time
+#'   # display the 5 results items, one at a time to avoid having too much information
+#'   # displayed at the same time
 #'   output$counts
 #'   output$rowPercent
 #'   output$colPercent
@@ -51,7 +53,8 @@
 #' 
 #'   # Example 2: generate a two dimensional table, outputting study specific contingency tables
 #'   ds.table2D(x='D$DIS_DIAB', y='D$GENDER', type='split')
-#'   # display the 5 results items, one at a time to avoid having too much information displayed at the same time
+#'   # display the 5 results items, one at a time to avoid having too much information 
+#'   # displayed at the same time
 #'   output$counts
 #'   output$rowPercent
 #'   output$colPercent
@@ -67,7 +70,8 @@
 #'   output$chi2Test
 #'   output$validity
 #' 
-#'   # Example 4: same example as above but output is given for each study, separately (i.e. type='split')
+#'   # Example 4: same example as above but output is given for each study, 
+#'   # separately (i.e. type='split')
 #'   # *** this example shows what happens when one or studies return an invalis table ***
 #'   output <- ds.table2D(x='D$DIS_CVA', y='D$GENDER', type='split')
 #'   output$counts
@@ -80,12 +84,12 @@
 #'   datashield.logout(opals)
 #' 
 #' }
-#' 
+#' @import stats
 ds.table2D <- function(x=NULL, y=NULL, type='combine', warningMessage=TRUE, datasources=NULL){ 
   
   # if no opal login details are provided look for 'opal' objects in the environment
   if(is.null(datasources)){
-    datasources <- findLoginObjects()
+    datasources <- DSI::findDSConnections()
   }
   
   if(is.null(x)){
@@ -125,7 +129,7 @@ ds.table2D <- function(x=NULL, y=NULL, type='combine', warningMessage=TRUE, data
   
   # call the server side function that produces a 1-dimensional table for each study
   cally <- paste0("table2dDS(", x, ",", y, ")")
-  output <- datashield.aggregate(datasources, as.symbol(cally))
+  output <- DSI::datashield.aggregate(datasources, as.symbol(cally))
   
   # extract contingency (count) tables and validity information for each study
   countTables <- vector("list", length(stdnames))
@@ -159,7 +163,7 @@ ds.table2D <- function(x=NULL, y=NULL, type='combine', warningMessage=TRUE, data
     pooledChi2test <- "Error: all entries of the table must be non-negative and finite"
   }else{
     pooledContingencyTable <- pooledCounts[1:(dim(pooledCounts)[1]-1), 1:(dim(pooledCounts)[2]-1)]
-    pooledChi2test <- chisq.test(pooledContingencyTable)
+    pooledChi2test <- stats::chisq.test(pooledContingencyTable)
   }
   
   # study specific row and column percentage tables (one for each study)
@@ -180,7 +184,7 @@ ds.table2D <- function(x=NULL, y=NULL, type='combine', warningMessage=TRUE, data
     }else{
       contingencyTable <- countTables[[i]][1:(dim(countTables[[i]])[1]-1), 1:(dim(countTables[[i]])[2]-1)]
       options(warn = -1) # suppress warning temporarily to avoid 'nuisance' message, analyst will found out chi2 results anyway.
-      chi2Tests[[i]] <- chisq.test(contingencyTable )
+      chi2Tests[[i]] <- stats::chisq.test(contingencyTable )
       options(warn = 0)  # put warning back
 
     }

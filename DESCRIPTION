@@ -1,11 +1,28 @@
 Package: dsBaseClient
-Maintainer: <datashield@obiba.org>
-Author: <datashield@obiba.org>
-Version: 4.1.4
-License: GPL-3
 Title: DataSHIELD base functions for the client site
-Description: DataSHIELD base functions for the client site
-Depends:
-    opal,
-    fields
+Version: 5.0.0
+Authors@R:
+    c(person(given = "Yannick",
+             family = "Marcon",
+             role = c("aut", "cre"),
+             email = "yannick.marcon@obiba.org",
+             comment = c(ORCID = "0000-0003-0138-2023")),
+      person(given = "Amadou",
+             family = "Gaye",
+             role = "ctb",
+             comment = c(ORCID = "0000-0002-1180-2792")))
+Description: DataSHIELD base functions for the client site. 
+    DataSHIELD is an infrastructure and series of R packages that 
+    enables the remote and non-disclosive analysis of sensitive research data. 
+    This package defines the API that is to be implemented by DataSHIELD-aware 
+    data repositories.
+Imports:
+    DSI, stats
+Suggests: knitr
+License: GPL-3
+URL: http://datashield.ac.uk
+BugReports: https://github.com/datashield/dsBaseClient
 RoxygenNote: 6.1.1
+VignetteBuilder: knitr
+Encoding: UTF-8
+LazyData: true

@@ -8,7 +8,7 @@
 #' @return The names of the list's elements for each study
 #' @author Gaye, A.
 #' @export
-#' @examples {
+#' @examples \dontrun{
 #' 
 #'   # load the login data
 #'   data(logindata)
@@ -32,7 +32,7 @@ ds.names <- function(x=NULL, datasources=NULL){
   
   # if no opal login details are provided look for 'opal' objects in the environment
   if(is.null(datasources)){
-    datasources <- findLoginObjects()
+    datasources <- DSI::findDSConnections()
   }
   
   if(is.null(x)){
@@ -51,7 +51,7 @@ ds.names <- function(x=NULL, datasources=NULL){
   
   # call the server side function that does the job.
   cally <- paste0('namesDS(', x, ')')
-  output <- datashield.aggregate(datasources, as.symbol(cally))
+  output <- DSI::datashield.aggregate(datasources, as.symbol(cally))
   return(output)
 
 }

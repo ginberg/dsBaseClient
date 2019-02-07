@@ -12,7 +12,7 @@
 #' @return a boolean 'TRUE' if the vector is empty (all values are 'NA') and 'FALSE'  otherwise.
 #' @author Gaye, A.
 #' @export
-#' @examples {
+#' @examples \dontrun{
 #' 
 #'   # load the login data
 #'   data(logindata)
@@ -33,7 +33,7 @@ ds.isNA <- function(x=NULL, datasources=NULL){
 
   # if no opal login details are provided look for 'opal' objects in the environment
   if(is.null(datasources)){
-    datasources <- findLoginObjects()
+    datasources <- DSI::findDSConnections()
   }
     
   if(is.null(x)){
@@ -71,7 +71,7 @@ ds.isNA <- function(x=NULL, datasources=NULL){
   # call server side function 'isNA.ds' to check, in each study, if the vector is empty
   for(i in 1: length(datasources)){
     cally <- paste0("isNaDS(", x, ")")
-    out <- datashield.aggregate(datasources[i], as.symbol(cally))
+    out <- DSI::datashield.aggregate(datasources[i], as.symbol(cally))
     if(out[[1]]){ 
       track[[i]] <- TRUE
       message("The variable ", varname, " in ", stdnames[i], " is missing at complete (all values are 'NA').")

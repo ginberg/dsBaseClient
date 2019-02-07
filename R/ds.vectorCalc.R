@@ -18,7 +18,7 @@
 #' @return  no data are returned to user, the output vector is stored on the server side.
 #' @author Gaye, A.
 #' @export
-#' @examples {
+#' @examples \dontrun{
 #' 
 #'   # load the file that contains the login details
 #'   data(logindata)
@@ -40,7 +40,7 @@ ds.vectorCalc = function(x=NULL, calc=NULL, newobj='math_output', datasources=NU
   
   # if no opal login details are provided look for 'opal' objects in the environment
   if(is.null(datasources)){
-    datasources <- findLoginObjects()
+    datasources <- DSI::findDSConnections()
   }
   
   if(is.null(x)){
@@ -74,6 +74,6 @@ ds.vectorCalc = function(x=NULL, calc=NULL, newobj='math_output', datasources=NU
   
   # call the server side function
   cally <- paste0(paste(x,collapse=calc))
-  datashield.assign(datasources, newobj, as.symbol(cally))
+  DSI::datashield.assign(datasources, newobj, as.symbol(cally))
   
 }

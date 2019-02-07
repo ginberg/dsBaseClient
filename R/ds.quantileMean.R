@@ -14,7 +14,7 @@
 #' @seealso \code{ds.mean} to compute statistical mean.
 #' @seealso \code{ds.summary} to generate the summary of a variable.
 #' @export
-#' @examples {
+#' @examples \dontrun{
 #' 
 #'   # load that contains the login details
 #'   data(logindata)
@@ -38,7 +38,7 @@ ds.quantileMean <- function(x=NULL, type='combine', datasources=NULL){
   
   # if no opal login details are provided look for 'opal' objects in the environment
   if(is.null(datasources)){
-    datasources <- findLoginObjects()
+    datasources <- DSI::findDSConnections()
   }
   
   if(is.null(x)){
@@ -70,13 +70,13 @@ ds.quantileMean <- function(x=NULL, type='combine', datasources=NULL){
   
   # get the server function that produces the quantiles
   cally1 <- paste0('quantileMeanDS(', x, ')') 
-  quants <- datashield.aggregate(datasources, as.symbol(cally1))
+  quants <- DSI::datashield.aggregate(datasources, as.symbol(cally1))
   
   # combine the vector of quantiles - using weighted sum
   cally2 <- paste0('length(', x, ')') 
-  lengths <- datashield.aggregate(datasources, as.symbol(cally2)) 
+  lengths <- DSI::datashield.aggregate(datasources, as.symbol(cally2)) 
   cally3 <- paste0("numNaDS(", x, ")")
-  numNAs <- datashield.aggregate(datasources, cally3)  
+  numNAs <- DSI::datashield.aggregate(datasources, cally3)  
   global.quantiles <- rep(0, length(quants[[1]])-1)
   global.mean <- 0
   for(i in 1: length(datasources)){
