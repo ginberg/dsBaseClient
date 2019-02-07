@@ -16,8 +16,10 @@ Description: DataSHIELD base functions for the client site.
     enables the remote and non-disclosive analysis of sensitive research data. 
     This package defines the API that is to be implemented by DataSHIELD-aware 
     data repositories.
+Depends:
+    DSI
 Imports:
-    DSI, stats
+    stats
 Suggests: knitr
 License: GPL-3
 URL: http://datashield.ac.uk
