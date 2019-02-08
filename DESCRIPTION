@@ -2,15 +2,20 @@ Package: dsBaseClient
 Title: DataSHIELD base functions for the client site
 Version: 5.0.0
 Authors@R:
-    c(person(given = "Yannick",
+    c(person(given = "Amadou",
+             family = "Gaye",
+             role = "aut",
+             comment = c(ORCID = "0000-0002-1180-2792")),
+      person(given = "Yannick",
              family = "Marcon",
-             role = c("aut", "cre"),
+             role = c("ctb", "cre"),
              email = "yannick.marcon@obiba.org",
              comment = c(ORCID = "0000-0003-0138-2023")),
-      person(given = "Amadou",
-             family = "Gaye",
+      person(given = "Julia",
+             family = "Isaeva",
              role = "ctb",
-             comment = c(ORCID = "0000-0002-1180-2792")))
+             comment = c(ORCID = "0000-0003-4926-1220")))
+Title: DataSHIELD Base Functions
 Description: DataSHIELD base functions for the client site. 
     DataSHIELD is an infrastructure and series of R packages that 
     enables the remote and non-disclosive analysis of sensitive research data. 
