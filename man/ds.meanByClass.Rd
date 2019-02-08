@@ -19,8 +19,7 @@ form 'A~B' where A is a single continuous vector and B a single factor vector}
 'combine', a pooled table of results is generated. If \code{type} is set to 'split', a table of results 
 is genrated for each study.}
 
-\item{datasources}{a list of opal object(s) obtained after login in to opal servers; these objects hold 
-also the data assign to R, as \code{dataframe}, from opal datasources.}
+\item{datasources}{a list of \code{\link{DSConnection-class}} objects obtained after login.}
 }
 \value{
 a table or a list of tables that hold the length of the numeric variable(s) and their mean 
@@ -48,7 +47,7 @@ parameter 'datasources'.
   # Example 1: calculate the pooled mean proportion for LAB_HDL across GENDER categories 
   # where both vectors are in a tabe structure "D"
   # login and assign LAB_HDL and GENDER to a table "D"
-  opals <- datashield.login(logins=logindata,assign=TRUE, variables=list('LAB_HDL', 'GENDER'))
+  conns <- datashield.login(logins=logindata,assign=TRUE, variables=list('LAB_HDL', 'GENDER'))
   ds.meanByClass(x='D$LAB_HDL~D$GENDER')
   
   # Example 2: calculate the mean proportion for LAB_HDL across GENDER categories 
@@ -57,17 +56,17 @@ parameter 'datasources'.
   ds.assign("D$LAB_HDL", "ldl")
   ds.assign("D$GENDER", "sex")
   ds.meanByClass(x='ldl~sex')
-  datashield.logout(opals)
+  datashield.logout(conns)
   
   # Example 3: calculate the mean proportion for LAB_HDL across gender, bmi and 
   # diabetes status categories
-  # login and assign all the variables stored on opal
-  opals <- datashield.login(logins=logindata,assign=TRUE)
+  # login and assign all the variables stored on the data repository table
+  conns <- datashield.login(logins=logindata,assign=TRUE)
   ds.meanByClass(x='D', outvar=c('LAB_HDL','LAB_TSC'),
     covar=c('GENDER','PM_BMI_CATEGORICAL','DIS_DIAB'))
 
   # clear the Datashield R sessions and logout
-  datashield.logout(opals)
+  datashield.logout(conns)
 
 }
 

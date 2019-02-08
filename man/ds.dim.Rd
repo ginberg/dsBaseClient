@@ -12,8 +12,7 @@ ds.dim(x = NULL, type = "split", datasources = NULL)
 \item{type}{a character which represents the type of analysis to carry out. 
 If \code{type} is set to 'combine', a global variance is calculated .}
 
-\item{datasources}{a list of opal object(s) obtained after login in to opal servers;
-these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.}
+\item{datasources}{a list of \code{\link{DSConnection-class}} objects obtained after login.}
 }
 \value{
 for an array, \code{NULL} or a vector of mode \code{integer}
@@ -34,7 +33,7 @@ of each study separately.
   data(logindata)
 
   # login and assign all the stored variables.
-  opals <- datashield.login(logins=logindata,assign=TRUE)
+  conns <- datashield.login(logins=logindata,assign=TRUE)
 
   # Example 1: Get the dimension of the assigned datasets in each study
   ds.dim(x='D')
@@ -47,7 +46,7 @@ of each study separately.
   \dontrun{ ds.dim(x='D$LAB_TSC') }
 
   # clear the Datashield R sessions and logout
-  datashield.logout(opals)
+  datashield.logout(conns)
 
 }
 

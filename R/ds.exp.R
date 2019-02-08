@@ -6,8 +6,8 @@
 #' @param newobj the name of the new vector.If this argument is set to \code{NULL}, the name of the new 
 #' variable is the name of the input variable with the suffixe '_exp' (e.g. 'PM_BMI_CONTINUOUS_exp', if input 
 #' variable's name is 'PM_BMI_CONTINUOUS')
-#' @param datasources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @return nothing is returned to the client, the new object is stored on the server side.
 #' @author Gaye, A.; Isaeva, J.
 #' @export
@@ -18,19 +18,19 @@
 #' 
 #'   # login and assign specific variable(s)
 #'   myvar <- list("PM_BMI_CONTINUOUS")
-#'   opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
+#'   conns <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
 #'   # compute exponential function of the 'PM_BMI_CONTINUOUS' variable
 #'   ds.exp(x='D$PM_BMI_CONTINUOUS')
 #' 
 #'   # clear the Datashield R sessions and logout
-#'   datashield.logout(opals)
+#'   datashield.logout(conns)
 #' 
 #' }
 #' 
 ds.exp = function(x=NULL, newobj=NULL, datasources=NULL){
   
-  # if no opal login details are provided look for 'opal' objects in the environment
+  # look for DS connections
   if(is.null(datasources)){
     datasources <- DSI::findDSConnections()
   }

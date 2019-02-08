@@ -4,8 +4,8 @@
 #' @details This function is called to avoid calling the client function 'ds.mean' 
 #' which may stop the process due to some checks not required when computing a mean inside 
 #' a function.
-#' @param dtsources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
+#' @param dtsources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @param x a character, the name of a numeric vector
 #' @keywords internal
 #' @return a pooled mean

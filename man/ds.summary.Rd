@@ -9,8 +9,7 @@ ds.summary(x = NULL, datasources = NULL)
 \arguments{
 \item{x}{a numeric or factor variable}
 
-\item{datasources}{a list of opal object(s) obtained after login in to opal servers;
-these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.}
+\item{datasources}{a list of \code{\link{DSConnection-class}} objects obtained after login.}
 }
 \value{
 the returned information depends on the class of the objects.
@@ -31,8 +30,8 @@ is given for each study separately.
   # load the login data
   data(logindata)
 
-  # login and assign all the variable held in the opal database
-  opals <- datashield.login(logins=logindata,assign=TRUE)
+  # login and assign all the variable held in the data repository
+  conns <- datashield.login(logins=logindata,assign=TRUE)
 
   # Example 1: suummary of a numerical variable
   ds.summary(x='D$LAB_TSC')
@@ -41,7 +40,7 @@ is given for each study separately.
   ds.summary(x='D$GENDER')
 
   # clear the Datashield R sessions and logout
-  datashield.logout(opals)
+  datashield.logout(conns)
 
 }
 

@@ -7,7 +7,7 @@
 meanByClassHelper1(dtsource, tables, variable, categories)
 }
 \arguments{
-\item{dtsource}{an opal object(s) obtained after login in to opal servers;}
+\item{dtsource}{a list of \code{\link{DSConnection-class}} objects obtained after login.}
 
 \item{tables}{a character vector, the tables to breakdown}
 

@@ -3,8 +3,8 @@
 #' @description This function is similar to the R function \code{names}.
 #' @details In DataSHIELD the use of this function is restricted to objects of type list.
 #' @param x a character, the name of an object of type list.
-#' @param datasources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @return The names of the list's elements for each study
 #' @author Gaye, A.
 #' @export
@@ -15,7 +15,7 @@
 #' 
 #'   # login and assign some variables to R
 #'   myvar <- list("DIS_DIAB","PM_BMI_CONTINUOUS","LAB_HDL", "GENDER")
-#'   opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
+#'   conns <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
 #'   # generates subset tables from the table assigned above (by default the table name is 'D')
 #'   ds.subsetByClass(x='D', subsets='subclasses')
@@ -24,13 +24,13 @@
 #'   ds.names('subclasses')
 #' 
 #'   # clear the Datashield R sessions and logout
-#'   datashield.logout(opals)
+#'   datashield.logout(conns)
 #' 
 #' }
 #' 
 ds.names <- function(x=NULL, datasources=NULL){
   
-  # if no opal login details are provided look for 'opal' objects in the environment
+  # look for DS connections
   if(is.null(datasources)){
     datasources <- DSI::findDSConnections()
   }

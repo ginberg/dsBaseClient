@@ -6,8 +6,8 @@
 #' @param x a character vector, the name of the vector and or table to combine by column.
 #' @param newobj the name of the output object. If this argument is set to \code{NULL}, 
 #' the name of the new object is 'newCbindObject'.
-#' @param datasources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @return nothing is returned to the client, the new object is stored on the server side.
 #' @author Gaye, A.
 #' @seealso \link{ds.dataframe} to generate a table of type dataframe.
@@ -24,7 +24,7 @@
 #'   # login and assign specific variables(s)
 #'   # (by default the assigned dataset is a dataframe named 'D')
 #'   myvar <- list('LAB_TSC', 'LAB_HDL')
-#'   opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
+#'   conns <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
 #'   # generate a new dataframe by combining the log values of 
 #'   # 'LAB_TSC' and 'LAB_HDL', by columns
@@ -33,13 +33,13 @@
 #'   ds.cbind(x=c('labtsc','labhdl'), newobj="myDataframe")
 #' 
 #'   # clear the Datashield R sessions and logout
-#'   datashield.logout(opals)
+#'   datashield.logout(conns)
 #' 
 #' }
 #' 
 ds.cbind <- function(x=NULL, newobj='newCbindObject', datasources=NULL){
 
-  # if no opal login details are provided look for 'opal' objects in the environment
+  # look for DS connections
   if(is.null(datasources)){
     datasources <- DSI::findDSConnections()
   }

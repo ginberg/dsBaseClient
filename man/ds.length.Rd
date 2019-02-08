@@ -13,8 +13,7 @@ ds.length(x = NULL, type = "combine", datasources = NULL)
 If \code{type} is set to 'combine', a global variance is calculated 
 if \code{type} is set to 'split', the variance is calculated separately for each study.}
 
-\item{datasources}{a list of opal object(s) obtained after login in to opal servers;
-these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.}
+\item{datasources}{a list of \code{\link{DSConnection-class}} objects obtained after login.}
 }
 \value{
 a numeric, the number of elements of the input vector or list.
@@ -33,7 +32,7 @@ each study.
   data(logindata)
 
   # login and assign all the variables stored on the server side
-  opals <- datashield.login(logins=logindata,assign=TRUE)
+  conns <- datashield.login(logins=logindata,assign=TRUE)
 
   # Example 1: Get the total number of observations across all the studies 
   # for the variable 'LAB_TSC' - default behaviour
@@ -43,7 +42,7 @@ each study.
   ds.length(x='D$LAB_TSC', type='split')
 
   # clear the Datashield R sessions and logout
-  datashield.logout(opals) 
+  datashield.logout(conns) 
 
 }
 

@@ -15,8 +15,7 @@ meanByClassHelper0a(a, b, type, datasources)
 'combine', a pooled table of results is generated. If \code{type} is set to 'split', a table of results 
 is genrated for each study.}
 
-\item{datasources}{a list of opal object(s) obtained after login in to opal servers; these objects hold 
-also the data assign to R, as \code{dataframe}, from opal datasources.}
+\item{datasources}{a list of \code{\link{DSConnection-class}} objects obtained after login.}
 }
 \value{
 a table or a list of tables that hold the length of the numeric variable and its mean 

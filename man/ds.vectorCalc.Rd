@@ -15,8 +15,7 @@ ds.vectorCalc(x = NULL, calc = NULL, newobj = "math_output",
 
 \item{newobj}{the name of the output object. By default the name is 'vectorCalc_output'.}
 
-\item{datasources}{a list of opal object(s) obtained after login in to opal servers;
-these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.}
+\item{datasources}{a list of \code{\link{DSConnection-class}} objects obtained after login.}
 }
 \value{
 no data are returned to user, the output vector is stored on the server side.
@@ -42,14 +41,14 @@ vectors has, hence the same length as the input vectors.
 
   # login and assign the required variables to R
   myvar <- list('LAB_TSC','LAB_HDL')
-  opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
+  conns <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
   # performs an addtion of 'LAB_TSC' and 'LAB_HDL'
   myvectors <- c('D$LAB_TSC', 'D$LAB_HDL')
   ds.vectorCalc(x=myvectors, calc='+')
 
   # clear the Datashield R sessions and logout
-  datashield.logout(opals)
+  datashield.logout(conns)
 
 }
 

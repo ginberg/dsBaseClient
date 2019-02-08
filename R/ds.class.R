@@ -3,8 +3,8 @@
 #' @description This function is similar to R function \code{class}.
 #' @details Same as for the R function \code{class}.
 #' @param x an R object
-#' @param datasources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @return a character the type of x
 #' @author Gaye, A.; Isaeva, J.
 #' @seealso \link{ds.exists} to verify if an object is defined (exists) on the server side.
@@ -16,7 +16,7 @@
 #' 
 #'   # login and assign all the stored variables
 #'   # (by default the assigned dataset is a dataframe named 'D')
-#'   opals <- datashield.login(logins=logindata,assign=TRUE)
+#'   conns <- datashield.login(logins=logindata,assign=TRUE)
 #' 
 #'   # Example 1: Get the class of the whole dataset
 #'   ds.class(x='D')
@@ -25,13 +25,13 @@
 #'   ds.class(x='D$LAB_TSC')
 #' 
 #'   # clear the Datashield R sessions and logout
-#'   datashield.logout(opals)
+#'   datashield.logout(conns)
 #' 
 #' }
 #' 
 ds.class <- function(x=NULL, datasources=NULL) {
   
-  # if no opal login details are provided look for 'opal' objects in the environment
+  # look for DS connections
   if(is.null(datasources)){
     datasources <- DSI::findDSConnections()
   }

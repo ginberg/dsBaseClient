@@ -12,9 +12,7 @@ ds.asList(x = NULL, newobj = NULL, datasources = NULL)
 \item{newobj}{the name of the new vector.If this argument is set to NULL, the name of the new 
 variable is the name of the input variable with the suffixe '_list'}
 
-\item{datasources}{a list of opal object(s) obtained after login in to opal servers;
-these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
-By default an internal function looks for 'opal' objects in the environment and sets this parameter.}
+\item{datasources}{a list of \code{\link{DSConnection-class}} objects obtained after login.}
 }
 \value{
 nothing is returned to the client, the new object is stored on the server side.
@@ -38,13 +36,13 @@ a list missing at complete is generated (i.e. all elements set to NA)).
   
   # login and assign all the stored variable(s)
   # (by default the assigned dataset is a dataframe named 'D')
-  opals <- datashield.login(logins=logindata,assign=TRUE)
+  conns <- datashield.login(logins=logindata,assign=TRUE)
 
   # turn the dataframe 'D' (the default name of the dataframe assign above) into a list
   ds.asList(x='D')
 
   # clear the Datashield R sessions and logout
-  datashield.logout(opals)
+  datashield.logout(conns)
 }
 
 }

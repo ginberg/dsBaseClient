@@ -9,8 +9,7 @@ ds.numNA(x = NULL, datasources = NULL)
 \arguments{
 \item{x}{a character, the name of a vector to check for missing entries.}
 
-\item{datasources}{a list of opal object(s) obtained after login in to opal servers;
-these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.}
+\item{datasources}{a list of \code{\link{DSConnection-class}} objects obtained after login.}
 }
 \value{
 for an array, \code{NULL} or a vector of mode \code{integer}
@@ -31,7 +30,7 @@ The number of missing entries are counted and the total for each study is return
   data(logindata)
 
   # login and assign all the stored variables.
-  opals <- datashield.login(logins=logindata,assign=TRUE)
+  conns <- datashield.login(logins=logindata,assign=TRUE)
 
   # Example 1: Get the number of missing values in the variable 'LAB_HDL' held in the table 'D'. 
   ds.numNA(x='D$LAB_HDL')
@@ -44,7 +43,7 @@ The number of missing entries are counted and the total for each study is return
   ds.numNA(x='labhdl')
 
   # clear the Datashield R sessions and logout
-  datashield.logout(opals)
+  datashield.logout(conns)
 
 }
 

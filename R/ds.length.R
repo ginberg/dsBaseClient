@@ -7,8 +7,8 @@
 #' @param type a character which represents the type of analysis to carry out. 
 #' If \code{type} is set to 'combine', a global variance is calculated 
 #' if \code{type} is set to 'split', the variance is calculated separately for each study.
-#' @param datasources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @return a numeric, the number of elements of the input vector or list.
 #' @author Gaye, A.
 #' @export
@@ -19,7 +19,7 @@
 #'   data(logindata)
 #' 
 #'   # login and assign all the variables stored on the server side
-#'   opals <- datashield.login(logins=logindata,assign=TRUE)
+#'   conns <- datashield.login(logins=logindata,assign=TRUE)
 #' 
 #'   # Example 1: Get the total number of observations across all the studies 
 #'   # for the variable 'LAB_TSC' - default behaviour
@@ -29,13 +29,13 @@
 #'   ds.length(x='D$LAB_TSC', type='split')
 #' 
 #'   # clear the Datashield R sessions and logout
-#'   datashield.logout(opals) 
+#'   datashield.logout(conns) 
 #' 
 #' }
 #' 
 ds.length = function(x=NULL, type='combine', datasources=NULL){
   
-  # if no opal login details are provided look for 'opal' objects in the environment
+  # look for DS connections
   if(is.null(datasources)){
     datasources <- DSI::findDSConnections()
   }

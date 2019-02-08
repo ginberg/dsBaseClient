@@ -18,8 +18,8 @@
 #' @param newobj a character, the name of the new vector in which missing values have been replaced. 
 #' If no name is specified the default name is the name of the original vector followed by the suffix 
 #' '.noNA' e.g. 'LAB_HDL.noNA' if the name of the vector is 'LAB_HDL'.
-#' @param datasources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @return a new vector or table structure with the same class is stored on the server site.
 #' @author Gaye, A.
 #' @export
@@ -29,7 +29,7 @@
 #'   data(logindata)
 #' 
 #'   # login and assign all the stored variables.
-#'   opals <- datashield.login(logins=logindata,assign=TRUE)
+#'   conns <- datashield.login(logins=logindata,assign=TRUE)
 #' 
 #'   # Replace missing values in variable 'LAB_HDL' by the mean value in each study
 #'   # first let us get the mean value for 'LAB_HDL' in each study
@@ -40,13 +40,13 @@
 #'   ds.replaceNA(x='D$LAB_HDL', forNA=list(1.569416, 1.556648), newobj='HDL.noNA')
 #' 
 #'   # clear the Datashield R sessions and logout
-#'   datashield.logout(opals)
+#'   datashield.logout(conns)
 #' 
 #' }
 #' 
 ds.replaceNA = function(x=NULL, forNA=NULL, newobj=NULL, datasources=NULL) {
   
-  # if no opal login details are provided look for 'opal' objects in the environment
+  # look for DS connections
   if(is.null(datasources)){
     datasources <- DSI::findDSConnections()
   }

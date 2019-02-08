@@ -6,8 +6,7 @@
 #' @param type a character which represents the type of analysis to carry out. 
 #' If \code{type} is set to 'combine', a global mean is calculated 
 #' if \code{type} is set to 'split', the mean is calculated separately for each study.
-#' @param datasources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{data frame}, from opal datasources.
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
 #' @return a numeric
 #' @author Gaye A., Isaeva I.
 #' @seealso \code{ds.quantileMean} to compute quantiles.
@@ -20,7 +19,7 @@
 #' 
 #'   # login and assign specific variable(s)
 #'   myvar <- list('LAB_TSC')
-#'   opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
+#'   conns <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
 #'   # Example 1: compute the pooled statistical mean of the variable 'LAB_TSC' - default behaviour
 #'   ds.mean(x='D$LAB_TSC')
@@ -29,13 +28,13 @@
 #'   ds.mean(x='D$LAB_TSC', type='split')
 #' 
 #'   # clear the Datashield R sessions and logout
-#'   datashield.logout(opals)
+#'   datashield.logout(conns)
 #' 
 #' }
 #' @import DSI
 ds.mean = function(x=NULL, type='combine', datasources=NULL){
   
-  # if no opal login details are provided look for 'opal' objects in the environment
+  # look for DS connections
   if(is.null(datasources)){
     datasources <- DSI::findDSConnections()
   }

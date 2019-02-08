@@ -7,8 +7,7 @@
 getPooledMean(dtsources, x)
 }
 \arguments{
-\item{dtsources}{a list of opal object(s) obtained after login in to opal servers;
-these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.}
+\item{dtsources}{a list of \code{\link{DSConnection-class}} objects obtained after login.}
 
 \item{x}{a character, the name of a numeric vector}
 }

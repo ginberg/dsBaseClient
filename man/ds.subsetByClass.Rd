@@ -15,8 +15,7 @@ the default name of this list is 'subClasses'.}
 
 \item{variables}{a vector of string characters, the name(s) of the variables to subset by.}
 
-\item{datasources}{a list of opal object(s) obtained after login in to opal servers;
-these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.}
+\item{datasources}{a list of \code{\link{DSConnection-class}} objects obtained after login.}
 }
 \value{
 a no data are return to the user but messages are printed out.
@@ -40,7 +39,7 @@ a subset is empty (i.e. no entries) the name of the subset is labelled with the 
 
   # login and assign some variables to R
   myvar <- list('DIS_DIAB','PM_BMI_CONTINUOUS','LAB_HDL', 'GENDER')
-  opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
+  conns <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
   # Example 1: generate all possible subsets from the table assigned above 
   # (one subset table for each class in each factor)
@@ -61,7 +60,7 @@ a subset is empty (i.e. no entries) the name of the subset is labelled with the 
   ds.names('subvectors')
 
   # clear the Datashield R sessions and logout
-  datashield.logout(opals)
+  datashield.logout(conns)
 
 }
 

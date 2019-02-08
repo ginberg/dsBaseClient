@@ -12,8 +12,7 @@ ds.c(x = NULL, newobj = NULL, datasources = NULL)
 \item{newobj}{the name of the output object. If this argument is set to NULL, 
 the name of the new object is 'newObject'.}
 
-\item{datasources}{a list of opal object(s) obtained after login in to opal servers;
-these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.}
+\item{datasources}{a list of \code{\link{DSConnection-class}} objects obtained after login.}
 }
 \value{
 nothing is returned to the client, the new object is stored on the server side.
@@ -35,7 +34,7 @@ function loops through that list to concatenate the list's elements into a vecto
   # login and assign specific variable(s)
   # (by default the assigned dataset is a dataframe named 'D')
   myvar <- c('LAB_TSC', 'LAB_HDL')
-  opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
+  conns <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
   # Get the variables 'LAB_TSC' by 'LAB_HDL' from the dataframe 'D' and combine them
   myvect <- c('D$LAB_TSC', 'D$LAB_HDL')
@@ -45,7 +44,7 @@ function loops through that list to concatenate the list's elements into a vecto
   ds.c(x=myvect)
 
   # clear the Datashield R sessions and logout
-  datashield.logout(opals)
+  datashield.logout(conns)
 
 }
 

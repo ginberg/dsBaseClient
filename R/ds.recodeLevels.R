@@ -9,9 +9,8 @@
 #' to the current number of levels.
 #' @param newobj, a character, the name of the new factor vector. If no name is specified
 #' for the new variable it is named after the input variable with a suffixe '_new'.
-#' @param datasources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
-#' By default an internal function looks for 'opal' objects in the environment and sets this parameter. 
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @return nothing is returned to the client, the new object is stored on the server side.
 #' @author Gaye, A.
 #' @export
@@ -21,7 +20,7 @@
 #'   data(logindata)
 #'
 #'   # login and assign all the variables
-#'   opals <- datashield.login(logins=logindata,assign=TRUE)
+#'   conns <- datashield.login(logins=logindata,assign=TRUE)
 #' 
 #'   # let s first check the levels in the categorical variable 'PM_BMI_CATEGORICAL'
 #'   ds.levels(x='D$PM_BMI_CATEGORICAL')
@@ -45,13 +44,13 @@
 #'   ds.levels(x='BMI_CAT_NEW3')
 #' 
 #'   # clear the Datashield R sessions and logout
-#'   datashield.logout(opals)
+#'   datashield.logout(conns)
 #' 
 #' }
 #'
 ds.recodeLevels <- function(x=NULL, newCategories=NULL, newobj=NULL, datasources=NULL){
   
-  # if no opal login details are provided look for 'opal' objects in the environment
+  # look for DS connections
   if(is.null(datasources)){
     datasources <- DSI::findDSConnections()
   }

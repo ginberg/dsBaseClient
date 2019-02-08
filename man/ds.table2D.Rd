@@ -20,8 +20,7 @@ is set to 'split' a 2-dimensional table is returned for each data source.}
 messages are suppressed if this parameter is set to FALSE. However the analyst can still view 'validity' information 
 which are stored in the output object 'validity' - see the list of output objects.}
 
-\item{datasources}{a list of opal object(s) obtained after login in to opal servers; these objects hold also the data 
-assign to R, as \code{dataframe}, from opal datasources.}
+\item{datasources}{a list of \code{\link{DSConnection-class}} objects obtained after login.}
 }
 \value{
 A list object containing the following items:
@@ -42,7 +41,7 @@ The function ds.table2D is a client-side wrapper function. It calls the server-s
 }
 \details{
 The table returned by the server side function might be valid (non disclosive - no table cell have 
-counts between 1 and the minimal number agreed by the data owner and set in opal) or invalid (potentially 
+counts between 1 and the minimal number agreed by the data owner and configured in the data repository) or invalid (potentially 
 disclosive - one or more table cells have a count between 1 and the minimal number agreed by the data owner). 
 If a 2-dimensional table is invalid all the cells are set to NA except the total count. This way it is possible 
 the know the total count and combine total counts across data sources but it is not possible to identify the 
@@ -55,7 +54,7 @@ cell(s) that had the small counts which render the table invalid.
   data(logindata)
 
   # login and assign all the variables to R
-  opals  <-  datashield.login(logins=logindata,assign=TRUE)
+  conns <- datashield.login(logins=logindata,assign=TRUE)
 
   # Example 1: generate a two dimensional table, outputting combined contingency tables
   output <- ds.table2D(x='D$DIS_DIAB', y='D$GENDER')
@@ -97,7 +96,7 @@ cell(s) that had the small counts which render the table invalid.
   output$validity
 
   # clear the Datashield R sessions and logout
-  datashield.logout(opals)
+  datashield.logout(conns)
 
 }
 }

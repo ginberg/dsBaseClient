@@ -3,8 +3,8 @@
 #' @description This is an internal function.
 #' @details This function is called by the function 'ds.meanByClass' to produce the final tables
 #' if the user sets the parmater 'type' to 'split'.
-#' @param dtsources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
+#' @param dtsources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @param tablenames a character vector, the name of the subset tables
 #' @param variables a character vector, the names of the continuous variables to computes a mean for. 
 #' @param invalidrecorder a list, holds informations about invalid subsets in each study

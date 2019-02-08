@@ -7,8 +7,7 @@
 meanByClassHelper2(dtsources, tablenames, variables, invalidrecorder)
 }
 \arguments{
-\item{dtsources}{a list of opal object(s) obtained after login in to opal servers;
-these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.}
+\item{dtsources}{a list of \code{\link{DSConnection-class}} objects obtained after login.}
 
 \item{tablenames}{a character vector, the name of the subset tables}
 

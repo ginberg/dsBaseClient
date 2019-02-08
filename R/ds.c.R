@@ -7,8 +7,8 @@
 #' @param x a character, a vector that holds the names of the objects to combine.
 #' @param newobj the name of the output object. If this argument is set to NULL, 
 #' the name of the new object is 'newObject'.
-#' @param datasources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @return  nothing is returned to the client, the new object is stored on the server side.
 #' @author Gaye, A.
 #' @export
@@ -20,7 +20,7 @@
 #'   # login and assign specific variable(s)
 #'   # (by default the assigned dataset is a dataframe named 'D')
 #'   myvar <- c('LAB_TSC', 'LAB_HDL')
-#'   opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
+#'   conns <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
 #'   # Get the variables 'LAB_TSC' by 'LAB_HDL' from the dataframe 'D' and combine them
 #'   myvect <- c('D$LAB_TSC', 'D$LAB_HDL')
@@ -30,13 +30,13 @@
 #'   ds.c(x=myvect)
 #' 
 #'   # clear the Datashield R sessions and logout
-#'   datashield.logout(opals)
+#'   datashield.logout(conns)
 #' 
 #' }
 #' 
 ds.c <- function(x=NULL, newobj=NULL, datasources=NULL){
   
-  # if no opal login details are provided look for 'opal' objects in the environment
+  # look for DS connections
   if(is.null(datasources)){
     datasources <- DSI::findDSConnections()
   }

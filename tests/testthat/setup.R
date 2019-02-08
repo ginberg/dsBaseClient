@@ -31,5 +31,5 @@ password <- c(getOption("opal.password"), getOption("opal.password"), getOption(
 table <- c("datashield.CNSIM1", "datashield.CNSIM2", "datashield.CNSIM3")
 logindata <- data.frame(server,url,user,password,table)
 
-opals <- datashield.login(logins=logindata,assign=TRUE,variables=getOption("datashield.variables", NULL))
+conns <- datashield.login(logins=logindata,assign=TRUE,variables=getOption("datashield.variables", NULL))
 

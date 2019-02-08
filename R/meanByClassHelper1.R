@@ -3,7 +3,7 @@
 #' @description This is an internal function.
 #' @details This function is called by the function 'ds.meanByClass' to break down 
 #' the initial table by the specified categorical variables.
-#' @param dtsource an opal object(s) obtained after login in to opal servers;
+#' @param dtsource a list of \code{\link{DSConnection-class}} objects obtained after login.
 #' @param tables a character vector, the tables to breakdown
 #' @param variable a character, the variable to subset on
 #' @param categories a character vector, the classes in the variables to subset on

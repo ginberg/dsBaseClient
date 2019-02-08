@@ -4,7 +4,7 @@
 #' It calls the server-side function table1dDS to generate 1-dimensional 
 #' tables for all data sources. 
 #' @details The table returned by the server side function might be valid (non disclosive -  
-#' no table cell have counts between 1 and the minimal number agreed by the data owner and set in opal)
+#' no table cell have counts between 1 and the minimal number agreed by the data owner and configured in the data repository)
 #' or invalid (potentially disclosive - one or more table cells have a count between 1 and the minimal number
 #' agreed by the data owner). If a 1-dimensional table is invalid all the cells are set to NA except the total
 #' count. This way it is possible the know the total count and combine total counts across data sources but it 
@@ -16,8 +16,7 @@
 #' @param warningMessage a boolean, if set to TRUE (deafult) a warning is displayed if any returned table is invalid. Warning
 #' messages are suppressed if this parameter is set to FALSE. However the analyst can still view 'validity' information 
 #' which are stored in the output object 'validity' - see the list of output objects.
-#' @param datasources a list of opal object(s) obtained after login in to opal servers; these objects hold also the data assign 
-#' to R, as \code{dataframe}, from opal datasources. 
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
 #' @return A list object containing the following items:
 #' \item{counts}{ table(s) that hold counts for each level/category. If some cells counts are invalid (see 'Details' 
 #' section) only the total (outer) cell counts are displayed in the returned individual study tables or in the pooled 
@@ -35,7 +34,7 @@
 #'   data(logindata)
 #' 
 #'   # login and assign all the stored variables to R
-#'   opals  <-  datashield.login(logins=logindata,assign=TRUE)
+#'   conns <- datashield.login(logins=logindata,assign=TRUE)
 #' 
 #'   # Example 1: generate a one dimensional table, outputting combined (pooled) contingency tables
 #'   output <- ds.table1D(x='D$GENDER')
@@ -57,13 +56,13 @@
 #'   output$validity
 #' 
 #'   # clear the Datashield R sessions and logout
-#'   datashield.logout(opals)
+#'   datashield.logout(conns)
 #' 
 #' }
 #'
 ds.table1D <- function(x=NULL, type='combine', warningMessage=TRUE, datasources=NULL){
   
-  # if no opal login details are provided look for 'opal' objects in the environment
+  # look for DS connections
   if(is.null(datasources)){
     datasources <- DSI::findDSConnections()
   }

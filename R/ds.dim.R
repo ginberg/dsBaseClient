@@ -8,8 +8,8 @@
 #' @param x a character, the name of R table object, for example a matrix, array or data frame
 #' @param type a character which represents the type of analysis to carry out. 
 #' If \code{type} is set to 'combine', a global variance is calculated .
-#' @param datasources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @return for an array, \code{NULL} or a vector of mode \code{integer}
 #' @author Gaye, A.; Isaeva, J.
 #' @seealso \link{ds.dataframe} to generate a table of type dataframe.
@@ -24,7 +24,7 @@
 #'   data(logindata)
 #' 
 #'   # login and assign all the stored variables.
-#'   opals <- datashield.login(logins=logindata,assign=TRUE)
+#'   conns <- datashield.login(logins=logindata,assign=TRUE)
 #' 
 #'   # Example 1: Get the dimension of the assigned datasets in each study
 #'   ds.dim(x='D')
@@ -37,13 +37,13 @@
 #'   \dontrun{ ds.dim(x='D$LAB_TSC') }
 #' 
 #'   # clear the Datashield R sessions and logout
-#'   datashield.logout(opals)
+#'   datashield.logout(conns)
 #' 
 #' }
 #' 
 ds.dim = function(x=NULL, type='split', datasources=NULL) {
   
-  # if no opal login details are provided look for 'opal' objects in the environment
+  # look for DS connections
   if(is.null(datasources)){
     datasources <- DSI::findDSConnections()
   }

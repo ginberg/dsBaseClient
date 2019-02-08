@@ -15,8 +15,8 @@
 #' @param reorderByRef a boolean that tells whether or not the new vector 
 #' should be ordered by the reference group (i.e. putting the reference group first).
 #' The default is to not re-order for the reasons explained in the 'details' section.
-#' @param datasources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @return nothing is returned to the client, the new object is stored on the server side.
 #' @author Isaeva, J.; Gaye, A.
 #' @seealso \link{ds.cbind} Combines objects column-wise.
@@ -32,7 +32,7 @@
 #' 
 #'   # login and assign all the stored variables
 #'   # (by default the assigned dataset is a dataframe named 'D')
-#'   opals <- datashield.login(logins=logindata,assign=TRUE)
+#'   conns <- datashield.login(logins=logindata,assign=TRUE)
 #' 
 #'   # Example 1: rename the categories and change the reference with re-ordering
 #'   # print out the levels of the initial vector
@@ -58,13 +58,13 @@
 #'   ds.changeRefGroup(x='bmi_new', ref='obesity', newobj='bmi_ob', reorderByRef=TRUE)
 #' 
 #'   # clear the Datashield R sessions and logout
-#'   datashield.logout(opals)
+#'   datashield.logout(conns)
 #' 
 #' }
 #' 
 ds.changeRefGroup = function(x=NULL, ref=NULL, newobj=NULL, reorderByRef=FALSE, datasources=NULL){
   
-  # if no opal login details are provided look for 'opal' objects in the environment
+  # look for DS connections
   if(is.null(datasources)){
     datasources <- DSI::findDSConnections()
   }

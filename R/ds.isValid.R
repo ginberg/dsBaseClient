@@ -8,9 +8,8 @@
 #' its levels (categories) have a count equal or greater than the set threshold. A dataframe or a matrix 
 #' is valid if the number of rows is equal or greater than the set threshold. 
 #' @param x a character, the name of a vector, dataframe or matrix.
-#' @param datasources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
-#' By default an internal function looks for 'opal' objects in the environment and sets this parameter.
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @return  a boolean, TRUE if input object is valid and FALSE otherwise.
 #' @author Gaye, A.
 #' @export
@@ -21,19 +20,19 @@
 #' 
 #'   # login and assign specific variable(s)
 #'   myvar <- list("LAB_TSC", "GENDER")
-#'   opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
+#'   conns <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
 #'   # Example 1: Check if the dataframe assigned above is valid
 #'   ds.isValid(x='D')
 #' 
 #'   # clear the Datashield R sessions and logout
-#'   datashield.logout(opals)
+#'   datashield.logout(conns)
 #' 
 #' }
 #' 
 ds.isValid = function(x=NULL, datasources=NULL){
   
-  # if no opal login details are provided look for 'opal' objects in the environment
+  # look for DS connections
   if(is.null(datasources)){
     datasources <- DSI::findDSConnections()
   }

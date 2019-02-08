@@ -13,8 +13,7 @@ ds.mean(x = NULL, type = "combine", datasources = NULL)
 If \code{type} is set to 'combine', a global mean is calculated 
 if \code{type} is set to 'split', the mean is calculated separately for each study.}
 
-\item{datasources}{a list of opal object(s) obtained after login in to opal servers;
-these objects hold also the data assign to R, as \code{data frame}, from opal datasources.}
+\item{datasources}{a list of \code{\link{DSConnection-class}} objects obtained after login.}
 }
 \value{
 a numeric
@@ -33,7 +32,7 @@ It is a wrapper for the server side function.
 
   # login and assign specific variable(s)
   myvar <- list('LAB_TSC')
-  opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
+  conns <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
   # Example 1: compute the pooled statistical mean of the variable 'LAB_TSC' - default behaviour
   ds.mean(x='D$LAB_TSC')
@@ -42,7 +41,7 @@ It is a wrapper for the server side function.
   ds.mean(x='D$LAB_TSC', type='split')
 
   # clear the Datashield R sessions and logout
-  datashield.logout(opals)
+  datashield.logout(conns)
 
 }
 }

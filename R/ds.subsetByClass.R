@@ -11,8 +11,8 @@
 #' @param variables a vector of string characters, the name(s) of the variables to subset by.
 #' @param subsets the name of the output object, a list that holds the subset objects. If set to NULL
 #' the default name of this list is 'subClasses'.
-#' @param datasources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @return a no data are return to the user but messages are printed out.
 #' @author Gaye, A.
 #' @seealso \link{ds.meanByClass} to compute mean and standard deviation across categories of a factor vectors.
@@ -26,7 +26,7 @@
 #' 
 #'   # login and assign some variables to R
 #'   myvar <- list('DIS_DIAB','PM_BMI_CONTINUOUS','LAB_HDL', 'GENDER')
-#'   opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
+#'   conns <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
 #'   # Example 1: generate all possible subsets from the table assigned above 
 #'   # (one subset table for each class in each factor)
@@ -47,13 +47,13 @@
 #'   ds.names('subvectors')
 #' 
 #'   # clear the Datashield R sessions and logout
-#'   datashield.logout(opals)
+#'   datashield.logout(conns)
 #' 
 #' }
 #' 
 ds.subsetByClass <- function(x=NULL, subsets="subClasses", variables=NULL, datasources=NULL){
   
-  # if no opal login details are provided look for 'opal' objects in the environment
+  # look for DS connections
   if(is.null(datasources)){
     datasources <- DSI::findDSConnections()
   }

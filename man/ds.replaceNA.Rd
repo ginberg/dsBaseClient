@@ -18,8 +18,7 @@ is connected to.}
 If no name is specified the default name is the name of the original vector followed by the suffix 
 '.noNA' e.g. 'LAB_HDL.noNA' if the name of the vector is 'LAB_HDL'.}
 
-\item{datasources}{a list of opal object(s) obtained after login in to opal servers;
-these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.}
+\item{datasources}{a list of \code{\link{DSConnection-class}} objects obtained after login.}
 }
 \value{
 a new vector or table structure with the same class is stored on the server site.
@@ -46,7 +45,7 @@ missing values. The latter is, by default, given a different that indicates its 
   data(logindata)
 
   # login and assign all the stored variables.
-  opals <- datashield.login(logins=logindata,assign=TRUE)
+  conns <- datashield.login(logins=logindata,assign=TRUE)
 
   # Replace missing values in variable 'LAB_HDL' by the mean value in each study
   # first let us get the mean value for 'LAB_HDL' in each study
@@ -57,7 +56,7 @@ missing values. The latter is, by default, given a different that indicates its 
   ds.replaceNA(x='D$LAB_HDL', forNA=list(1.569416, 1.556648), newobj='HDL.noNA')
 
   # clear the Datashield R sessions and logout
-  datashield.logout(opals)
+  datashield.logout(conns)
 
 }
 

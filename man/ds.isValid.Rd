@@ -9,9 +9,7 @@ ds.isValid(x = NULL, datasources = NULL)
 \arguments{
 \item{x}{a character, the name of a vector, dataframe or matrix.}
 
-\item{datasources}{a list of opal object(s) obtained after login in to opal servers;
-these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
-By default an internal function looks for 'opal' objects in the environment and sets this parameter.}
+\item{datasources}{a list of \code{\link{DSConnection-class}} objects obtained after login.}
 }
 \value{
 a boolean, TRUE if input object is valid and FALSE otherwise.
@@ -35,13 +33,13 @@ is valid if the number of rows is equal or greater than the set threshold.
 
   # login and assign specific variable(s)
   myvar <- list("LAB_TSC", "GENDER")
-  opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
+  conns <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
   # Example 1: Check if the dataframe assigned above is valid
   ds.isValid(x='D')
 
   # clear the Datashield R sessions and logout
-  datashield.logout(opals)
+  datashield.logout(conns)
 
 }
 

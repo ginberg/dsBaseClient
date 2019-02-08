@@ -3,8 +3,8 @@
 #' @description This function is similar to R function \code{levels}
 #' @details This is just a wrapper function for the server side function.
 #' @param  x a character, the name of a factor variable
-#' @param datasources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @return levels of x
 #' @author Gaye, A.; Isaeva, J.
 #' @export
@@ -14,7 +14,7 @@
 #'   data(logindata)
 #' 
 #'   # login
-#'   opals <- datashield.login(logins=logindata,assign=TRUE)
+#'   conns <- datashield.login(logins=logindata,assign=TRUE)
 #' 
 #'   # Example 1: Get the levels of the PM_BMI_CATEGORICAL variable
 #'   ds.levels(x='D$PM_BMI_CATEGORICAL')
@@ -23,13 +23,13 @@
 #'   \dontrun{ ds.levels(x='D$LAB_TSC') }
 #' 
 #'   # clear the Datashield R sessions and logout
-#'   datashield.logout(opals)
+#'   datashield.logout(conns)
 #' 
 #' }
 #' 
 ds.levels = function(x=NULL, datasources=NULL) {
   
-  # if no opal login details are provided look for 'opal' objects in the environment
+  # look for DS connections
   if(is.null(datasources)){
     datasources <- DSI::findDSConnections()
   }

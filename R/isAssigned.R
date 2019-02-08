@@ -4,8 +4,8 @@
 #' @details After calling an assign function it is important
 #' to know whether or not the action has been completed by 
 #' cjhecking if the output actually exists on the server side.
-#' @param datasources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @param newobj a character, the name the object to look for.
 #' @keywords internal
 #' @return nothing is return but the process is stopped if 
@@ -13,7 +13,7 @@
 #'
 isAssigned <- function(datasources=NULL, newobj=NULL){
   cally <- call('exists', newobj)
-  qc <- DSI::datashield.aggregate(datasources, cally)
+  qc <- DSI::datashield.aggregate(datasources, cally, async = FALSE)
   indx <- as.numeric(which(qc==TRUE))  
   if(length(indx) > 0 & length(indx) < length(datasources)){
     stop("The output object, '", newobj, "', was generated only for ", names(datasources)[indx], "!", call.=FALSE)

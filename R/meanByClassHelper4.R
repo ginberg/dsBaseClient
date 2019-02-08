@@ -3,8 +3,8 @@
 #' @description This is an internal function.
 #' @details This function is called by the function 'ds.meanByClass' to obtain 'loose'
 #' subset tables because the 'subsetByClass' function does not handle a table within a list.
-#' @param dtsource a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
+#' @param dtsource a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @param alist the name of the list that holds the final subset tables
 #' @param initialtable a character the name of the table that the subset were generated from
 #' @param variable a character, the variable to subset on

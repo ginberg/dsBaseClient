@@ -12,8 +12,7 @@ ds.cbind(x = NULL, newobj = "newCbindObject", datasources = NULL)
 \item{newobj}{the name of the output object. If this argument is set to \code{NULL}, 
 the name of the new object is 'newCbindObject'.}
 
-\item{datasources}{a list of opal object(s) obtained after login in to opal servers;
-these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.}
+\item{datasources}{a list of \code{\link{DSConnection-class}} objects obtained after login.}
 }
 \value{
 nothing is returned to the client, the new object is stored on the server side.
@@ -34,7 +33,7 @@ see details of the R base function \code{cbind}.
   # login and assign specific variables(s)
   # (by default the assigned dataset is a dataframe named 'D')
   myvar <- list('LAB_TSC', 'LAB_HDL')
-  opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
+  conns <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
   # generate a new dataframe by combining the log values of 
   # 'LAB_TSC' and 'LAB_HDL', by columns
@@ -43,7 +42,7 @@ see details of the R base function \code{cbind}.
   ds.cbind(x=c('labtsc','labhdl'), newobj="myDataframe")
 
   # clear the Datashield R sessions and logout
-  datashield.logout(opals)
+  datashield.logout(conns)
 
 }
 

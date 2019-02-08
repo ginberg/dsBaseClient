@@ -9,8 +9,8 @@
 #' "rowSums", "colSums", "rowMeans" or "colMeans".
 #' @param newobj the name of the new object. If this argument is set to NULL, the name of the new 
 #' variable, set by default, is 'rowColCalc_out'.
-#' @param datasources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @return nothing is returned to the client, the new object is stored on the server side.
 #' @export
 #' @author Gaye, A.
@@ -21,19 +21,19 @@
 #'
 #'   # login and assign two variables
 #'   myvar  <-  list("LAB_TSC","LAB_HDL")
-#'   opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
+#'   conns <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
 #'   # calculate the sum of each row of the above assigned dataset (default name 'D')
 #'   ds.rowColCalc(x='D', operation='rowSums', newobj='rsum_D')
 #' 
 #'   # clear the Datashield R sessions and logout
-#'   datashield.logout(opals)
+#'   datashield.logout(conns)
 #' 
 #' }
 #' 
 ds.rowColCalc = function(x=NULL, operation=NULL, newobj=NULL, datasources=NULL){
   
-  # if no opal login details are provided look for 'opal' objects in the environment
+  # look for DS connections
   if(is.null(datasources)){
     datasources <- DSI::findDSConnections()
   }

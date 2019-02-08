@@ -3,8 +3,8 @@
 #' @description This is an internal function.
 #' @details This function is called by the function 'ds.subset' to ensure that the requested subset
 #' is not larger than the original object.
-#' @param datasources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @param data a string character, the name of the dataframe or the factor vector and the range of the subset.
 #' @param rs a vector of two integers, the indices of the rows de extract. 
 #' @param cs a vector of two integers or one or more characters.

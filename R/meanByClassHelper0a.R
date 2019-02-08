@@ -8,8 +8,8 @@
 #' @param type a character which represents the type of analysis to carry out. If \code{type} is set to 
 #' 'combine', a pooled table of results is generated. If \code{type} is set to 'split', a table of results 
 #' is genrated for each study.
-#' @param datasources a list of opal object(s) obtained after login in to opal servers; these objects hold 
-#' also the data assign to R, as \code{dataframe}, from opal datasources.
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#' 
 #' @return a table or a list of tables that hold the length of the numeric variable and its mean 
 #' and standard deviation in each subgroup (subset).
 #' @keywords internal

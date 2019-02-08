@@ -19,8 +19,8 @@
 #' operator. This parameter is ignored if the input data is not a vector.
 #' @param threshold a numeric, the threshold to use in conjunction with the logical parameter. This parameter is ignored 
 #' if the input data is not a vector.
-#' @param datasources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @return no data are return to the user, the generated subset dataframe is stored on the server side.
 #' @author Gaye, A.
 #' @seealso \link{ds.subsetByClass} to subset by the classes of factor vector(s).
@@ -34,7 +34,7 @@
 #' 
 #'   # login and assign some variables to R
 #'   myvar <- list("DIS_DIAB","PM_BMI_CONTINUOUS","LAB_HDL", "GENDER")
-#'   opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
+#'   conns <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
 #'   # Example 1: generate a subset of the assigned dataframe (by default the 
 #'   # table is named 'D') with complete cases only
@@ -68,13 +68,13 @@
 #'   ds.subset(x='D', subset='subD5', rows=c(1:100))
 #' 
 #'   # clear the Datashield R sessions and logout
-#'   datashield.logout(opals)
+#'   datashield.logout(conns)
 #' 
 #' }
 #' 
 ds.subset <- function(x=NULL, subset="subsetObject", completeCases=FALSE, rows=NULL, cols=NULL, logicalOperator=NULL, threshold=NULL, datasources=NULL){
   
-  # if no opal login details are provided look for 'opal' objects in the environment
+  # look for DS connections
   if(is.null(datasources)){
     datasources <- DSI::findDSConnections()
   }

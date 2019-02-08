@@ -7,9 +7,8 @@
 #' @param x a character, the name of numeric, integer or character vector
 #' @param newobj the name of the new vector.If this argument is set to NULL, the name of the new 
 #' variable is the name of the input variable with the suffixe '_fact'.
-#' @param datasources a list of opal object(s) obtained after login in to opal servers;
-#' these objects hold also the data assign to R, as \code{dataframe}, from opal datasources.
-#' By default an internal function looks for 'opal' objects in the environment and sets this parameter. 
+#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login.
+#'
 #' @return nothing is returned to the client, the new object is stored on the server side.
 #' @author Gaye, A.; Burton, P.
 #' @seealso \link{ds.asNumeric} to turn a variable into a numeric type.
@@ -26,7 +25,7 @@
 #'   # login and assign specific variable(s)
 #'   # (by default the assigned dataset is a dataframe named 'D')
 #'   myvar <- list('GENDER', 'LAB_HDL')
-#'   opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
+#'   conns <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
 #'   # turn the factor variable 'GENDER' into numeric and then back into factor
 #'   ds.asNumeric(x='D$GENDER', newobj='gender_num')
@@ -40,13 +39,13 @@
 #'   ds.levels(x='lab.hdl.fact')
 #' 
 #'   # clear the Datashield R sessions and logout
-#'   datashield.logout(opals)
+#'   datashield.logout(conns)
 #' 
 #' }
 #' 
 ds.asFactor = function(x=NULL, newobj=NULL, datasources=NULL){
   
-  # if no opal login details are provided look for 'opal' objects in the environment
+  # look for DS connections
   if(is.null(datasources)){
     datasources <- DSI::findDSConnections()
   }
