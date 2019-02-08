@@ -37,7 +37,7 @@ ds.length = function(x=NULL, type='combine', datasources=NULL){
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- DSI::findDSConnections()
+    datasources <- findDSConnections()
   }
   
   if(is.null(x)){
@@ -67,7 +67,7 @@ ds.length = function(x=NULL, type='combine', datasources=NULL){
   }
   
   cally <- paste0("length(", x, ")")
-  lengths <- DSI::datashield.aggregate(datasources, as.symbol(cally))
+  lengths <- datashield.aggregate(datasources, as.symbol(cally))
   
   if(type=="combine"){
     pooled.length <- sum(unlist(lengths))

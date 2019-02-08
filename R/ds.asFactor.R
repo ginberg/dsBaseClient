@@ -47,7 +47,7 @@ ds.asFactor = function(x=NULL, newobj=NULL, datasources=NULL){
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- DSI::findDSConnections()
+    datasources <- findDSConnections()
   }
   
   if(is.null(x)){
@@ -81,12 +81,12 @@ ds.asFactor = function(x=NULL, newobj=NULL, datasources=NULL){
   # as turning a numeric directly into a factor can produce weird results.
   if(typ == 'numeric' | typ == 'integer' | typ == 'logical'){
     cally <- paste0('as.character(', x, ')' )
-    DSI::datashield.assign(datasources, 'tempvect', as.symbol(cally))
+    datashield.assign(datasources, 'tempvect', as.symbol(cally))
     cally <- 'asFactorDS(tempvect)'
-    DSI::datashield.assign(datasources, newobj, as.symbol(cally))
+    datashield.assign(datasources, newobj, as.symbol(cally))
   }else{
     cally <- paste0('asFactorDS(', x, ')' )
-    DSI::datashield.assign(datasources, newobj, as.symbol(cally))
+    datashield.assign(datasources, newobj, as.symbol(cally))
   }
   
   # check that the new object has been created and display a message accordingly

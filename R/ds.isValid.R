@@ -34,7 +34,7 @@ ds.isValid = function(x=NULL, datasources=NULL){
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- DSI::findDSConnections()
+    datasources <- findDSConnections()
   }
   
   if(is.null(x)){
@@ -65,7 +65,7 @@ ds.isValid = function(x=NULL, datasources=NULL){
   
   # call the server side function that does the job and return its output
   cally <- paste0('isValidDS(', x, ')')
-  output <- DSI::datashield.aggregate(datasources, as.symbol(cally))
+  output <- datashield.aggregate(datasources, as.symbol(cally))
   return(output)
   
 }

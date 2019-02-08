@@ -33,7 +33,7 @@ ds.class <- function(x=NULL, datasources=NULL) {
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- DSI::findDSConnections()
+    datasources <- findDSConnections()
   }
   
   if(is.null(x)){
@@ -44,7 +44,7 @@ ds.class <- function(x=NULL, datasources=NULL) {
   defined <- isDefined(datasources, x)
   
   cally <- paste0('class(', x, ')')
-  output <- DSI::datashield.aggregate(datasources, as.symbol(cally))
+  output <- datashield.aggregate(datasources, as.symbol(cally))
   
   return(output)
 

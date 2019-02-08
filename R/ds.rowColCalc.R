@@ -35,7 +35,7 @@ ds.rowColCalc = function(x=NULL, operation=NULL, newobj=NULL, datasources=NULL){
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- DSI::findDSConnections()
+    datasources <- findDSConnections()
   }
   
   if(is.null(x)){
@@ -60,7 +60,7 @@ ds.rowColCalc = function(x=NULL, operation=NULL, newobj=NULL, datasources=NULL){
   # we want to deal only with two dimensional tables
   dim2 <- c()
   for(i in 1:numsources){
-    dims <- DSI::datashield.aggregate(datasources[i], paste0("dim(", x, ")"))
+    dims <- datashield.aggregate(datasources[i], paste0("dim(", x, ")"))
     if(length(dims[[1]]) != 2){
       stop("The input table in ", stdnames[i]," has more than two dimensions. Only strutures of two dimensions are allowed", call.=FALSE)
     }
@@ -70,10 +70,10 @@ ds.rowColCalc = function(x=NULL, operation=NULL, newobj=NULL, datasources=NULL){
   # check that, for each study,  all the columns of the input table are of 'numeric' type
   dtname <- x
   for(i in 1:numsources){
-    cols <- DSI::datashield.aggregate(datasources[i], paste0("colnames(", x, ")"))
+    cols <- datashield.aggregate(datasources[i], paste0("colnames(", x, ")"))
     for(j in 1:dim2[i]){
       cally <- paste0("class(", dtname, "$", cols[[1]][j], ")")
-      res <- DSI::datashield.aggregate(datasources[i], cally)
+      res <- datashield.aggregate(datasources[i], cally)
       if(res[[1]] != 'numeric' & res[[1]] != 'integer'){
         stop("One or more columns of ", dtname, " are not of numeric type, in ",  stdnames[i], ".", call.=FALSE)
       }
@@ -101,7 +101,7 @@ ds.rowColCalc = function(x=NULL, operation=NULL, newobj=NULL, datasources=NULL){
   
   # call the server side function that does the job
   cally <-  paste0("rowColCalcDS(", x, ",", indx, ")")
-  DSI::datashield.assign(datasources, newobj, as.symbol(cally))
+  datashield.assign(datasources, newobj, as.symbol(cally))
   
   # check that the new object has been created and display a message accordingly
   finalcheck <- isAssigned(datasources, newobj)

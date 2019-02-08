@@ -31,7 +31,7 @@ ds.levels = function(x=NULL, datasources=NULL) {
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- DSI::findDSConnections()
+    datasources <- findDSConnections()
   }
   
   if(is.null(x)){
@@ -61,7 +61,7 @@ ds.levels = function(x=NULL, datasources=NULL) {
   }  
   
   cally <- paste0("levels(", x, ")")
-  levels_all <- DSI::datashield.aggregate(datasources, as.symbol(cally))
+  levels_all <- datashield.aggregate(datasources, as.symbol(cally))
   
   return(levels_all)
 }

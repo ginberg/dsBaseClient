@@ -64,7 +64,7 @@ ds.table1D <- function(x=NULL, type='combine', warningMessage=TRUE, datasources=
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- DSI::findDSConnections()
+    datasources <- findDSConnections()
   }
   
   if(is.null(x)){
@@ -94,7 +94,7 @@ ds.table1D <- function(x=NULL, type='combine', warningMessage=TRUE, datasources=
   
   # call the server side function that produces a 1-dimensional table for each study
   cally <- paste0("table1dDS(", x, ")")
-  output <- DSI::datashield.aggregate(datasources, as.symbol(cally))
+  output <- datashield.aggregate(datasources, as.symbol(cally))
   
   # extract contingency (count) tables and validity information for each study
   countTables <- vector("list", length(stdnames))

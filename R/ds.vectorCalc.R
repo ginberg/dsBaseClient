@@ -40,7 +40,7 @@ ds.vectorCalc = function(x=NULL, calc=NULL, newobj='math_output', datasources=NU
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- DSI::findDSConnections()
+    datasources <- findDSConnections()
   }
   
   if(is.null(x)){
@@ -74,6 +74,6 @@ ds.vectorCalc = function(x=NULL, calc=NULL, newobj='math_output', datasources=NU
   
   # call the server side function
   cally <- paste0(paste(x,collapse=calc))
-  DSI::datashield.assign(datasources, newobj, as.symbol(cally))
+  datashield.assign(datasources, newobj, as.symbol(cally))
   
 }

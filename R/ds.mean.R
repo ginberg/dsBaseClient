@@ -36,7 +36,7 @@ ds.mean = function(x=NULL, type='combine', datasources=NULL){
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- DSI::findDSConnections()
+    datasources <- findDSConnections()
   }
   
   if(is.null(x)){
@@ -69,14 +69,14 @@ ds.mean = function(x=NULL, type='combine', datasources=NULL){
   num.sources <- length(datasources)
   
   cally <- paste0("meanDS(", x, ")")
-  mean.local <- DSI::datashield.aggregate(datasources, as.symbol(cally))
+  mean.local <- datashield.aggregate(datasources, as.symbol(cally))
   
   cally <- paste0("NROW(", x, ")")
-  length.local <- DSI::datashield.aggregate(datasources, cally)
+  length.local <- datashield.aggregate(datasources, cally)
   
   # get the number of entries with missing values
   cally <- paste0("numNaDS(", x, ")")
-  numNA.local <- DSI::datashield.aggregate(datasources, cally)  
+  numNA.local <- datashield.aggregate(datasources, cally)  
   
   if (type=='split') {
     return(mean.local)

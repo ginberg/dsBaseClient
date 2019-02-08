@@ -38,7 +38,7 @@ ds.assign <- function(toAssign=NULL, newobj="newObject", datasources=NULL){
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- DSI::findDSConnections()
+    datasources <- findDSConnections()
   }
   
   if(is.null(toAssign)){
@@ -46,7 +46,7 @@ ds.assign <- function(toAssign=NULL, newobj="newObject", datasources=NULL){
   }
   
   # now do the business
-  DSI::datashield.assign(datasources, newobj, as.symbol(toAssign))
+  datashield.assign(datasources, newobj, as.symbol(toAssign))
   
   # check that the new object has been created and display a message accordingly
   finalcheck <- isAssigned(datasources, newobj)

@@ -15,14 +15,14 @@ getPooledVar <- function(dtsources, x){
   num.sources <- length(dtsources)
   
   cally <- paste0("varDS(", x, ")")
-  var.local <- DSI::datashield.aggregate(dtsources, as.symbol(cally))
+  var.local <- datashield.aggregate(dtsources, as.symbol(cally))
   
   cally <- paste0("NROW(", x, ")")
-  length.local <- DSI::datashield.aggregate(dtsources, cally)
+  length.local <- datashield.aggregate(dtsources, cally)
 
   # get the number of entries with missing values
   cally <- paste0("numNaDS(", x, ")")
-  numNA.local <- DSI::datashield.aggregate(dtsources, cally)  
+  numNA.local <- datashield.aggregate(dtsources, cally)  
 
   length.total = 0
   sum.weighted = 0

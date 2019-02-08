@@ -32,7 +32,7 @@ ds.names <- function(x=NULL, datasources=NULL){
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- DSI::findDSConnections()
+    datasources <- findDSConnections()
   }
   
   if(is.null(x)){
@@ -51,7 +51,7 @@ ds.names <- function(x=NULL, datasources=NULL){
   
   # call the server side function that does the job.
   cally <- paste0('namesDS(', x, ')')
-  output <- DSI::datashield.aggregate(datasources, as.symbol(cally))
+  output <- datashield.aggregate(datasources, as.symbol(cally))
   return(output)
 
 }

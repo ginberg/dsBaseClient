@@ -32,7 +32,7 @@ ds.isNA <- function(x=NULL, datasources=NULL){
 
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- DSI::findDSConnections()
+    datasources <- findDSConnections()
   }
     
   if(is.null(x)){
@@ -70,7 +70,7 @@ ds.isNA <- function(x=NULL, datasources=NULL){
   # call server side function 'isNA.ds' to check, in each study, if the vector is empty
   for(i in 1: length(datasources)){
     cally <- paste0("isNaDS(", x, ")")
-    out <- DSI::datashield.aggregate(datasources[i], as.symbol(cally))
+    out <- datashield.aggregate(datasources[i], as.symbol(cally))
     if(out[[1]]){ 
       track[[i]] <- TRUE
       message("The variable ", varname, " in ", stdnames[i], " is missing at complete (all values are 'NA').")

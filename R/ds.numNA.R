@@ -38,7 +38,7 @@ ds.numNA = function(x=NULL, datasources=NULL) {
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- DSI::findDSConnections()
+    datasources <- findDSConnections()
   }
   
   if(is.null(x)){
@@ -55,7 +55,7 @@ ds.numNA = function(x=NULL, datasources=NULL) {
 
   # call the server side function
   cally <- paste0("numNaDS(", x, ")")
-  numNAs <- DSI::datashield.aggregate(datasources, as.symbol(cally))
+  numNAs <- datashield.aggregate(datasources, as.symbol(cally))
   
   return(numNAs)
 }

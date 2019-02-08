@@ -55,7 +55,7 @@ ds.subsetByClass <- function(x=NULL, subsets="subClasses", variables=NULL, datas
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- DSI::findDSConnections()
+    datasources <- findDSConnections()
   }
   
   if(is.null(x)){
@@ -82,12 +82,12 @@ ds.subsetByClass <- function(x=NULL, subsets="subClasses", variables=NULL, datas
   if(typ == 'data.frame'){
     dtname <- x
     for(i in 1:numsources){
-      cols <- DSI::datashield.aggregate(datasources[i], paste0("colnames(", x, ")"))
-      dims <- DSI::datashield.aggregate(datasources[i], paste0("dim(", x, ")"))
+      cols <- datashield.aggregate(datasources[i], paste0("colnames(", x, ")"))
+      dims <- datashield.aggregate(datasources[i], paste0("dim(", x, ")"))
       tracker <-c()
       for(j in 1:dims[[1]][2]){
         cally <- paste0("class(", dtname, "$", cols[[1]][j], ")")
-        res <- DSI::datashield.aggregate(datasources[i], cally)
+        res <- datashield.aggregate(datasources[i], cally)
         if(res[[1]] != 'factor'){
           tracker <- append(tracker, 0)
         }else{
@@ -107,7 +107,7 @@ ds.subsetByClass <- function(x=NULL, subsets="subClasses", variables=NULL, datas
   }else{
     cally <- paste0("subsetByClassDS('", x, "', c('",paste(variables,collapse="','"),"'))")
   }
-  DSI::datashield.assign(datasources, subsets, as.symbol(cally))
+  datashield.assign(datasources, subsets, as.symbol(cally))
   
   # check that the new object has been created and display a message accordingly
   finalcheck <- isAssigned(datasources, subsets)

@@ -33,7 +33,7 @@ ds.list = function(x=NULL, newobj=NULL, datasources=NULL){
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- DSI::findDSConnections()
+    datasources <- findDSConnections()
   }
   
   if(is.null(x)){
@@ -73,7 +73,7 @@ ds.list = function(x=NULL, newobj=NULL, datasources=NULL){
   
   # call the server side function that does the job
   cally <-  paste0("listDS(list(",paste(x,collapse=","),"), list('",paste(varnames,collapse="','"),"'))")
-  DSI::datashield.assign(datasources, newobj, as.symbol(cally))
+  datashield.assign(datasources, newobj, as.symbol(cally))
   
   # check that the new object has been created and display a message accordingly
   finalcheck <- isAssigned(datasources, newobj)

@@ -47,7 +47,7 @@ ds.dataframe = function(x=NULL,newobj=NULL,row.names=NULL,check.rows=FALSE,check
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- DSI::findDSConnections()
+    datasources <- findDSConnections()
   }
   
   if(is.null(x)){
@@ -96,7 +96,7 @@ ds.dataframe = function(x=NULL,newobj=NULL,row.names=NULL,check.rows=FALSE,check
                      ",list(","'",paste(varnames,collapse="','"),"'","),"
                      ,stringsAsFactors,",",completeCases,")") 
   }
-  DSI::datashield.assign(datasources, newobj, as.symbol(cally))
+  datashield.assign(datasources, newobj, as.symbol(cally))
   
   # check that the new object has been created and display a message accordingly
   finalcheck <- isAssigned(datasources, newobj)

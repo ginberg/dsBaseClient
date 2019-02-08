@@ -30,7 +30,7 @@ ds.colnames <- function(x=NULL, datasources=NULL) {
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- DSI::findDSConnections()
+    datasources <- findDSConnections()
   }
   
   if(is.null(x)){
@@ -49,7 +49,7 @@ ds.colnames <- function(x=NULL, datasources=NULL) {
   }
   
   cally <- paste0("colnames(", x, ")")
-  column_names <- DSI::datashield.aggregate(datasources, cally)
+  column_names <- datashield.aggregate(datasources, cally)
   
   return(column_names)
 

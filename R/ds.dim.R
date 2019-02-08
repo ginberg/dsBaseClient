@@ -45,7 +45,7 @@ ds.dim = function(x=NULL, type='split', datasources=NULL) {
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- DSI::findDSConnections()
+    datasources <- findDSConnections()
   }
   
   if(is.null(x)){
@@ -64,7 +64,7 @@ ds.dim = function(x=NULL, type='split', datasources=NULL) {
   }
   
   cally <- paste0("dim(", x, ")")
-  dimensions <- DSI::datashield.aggregate(datasources, as.symbol(cally))
+  dimensions <- datashield.aggregate(datasources, as.symbol(cally))
   
   if(type=="combine"){
     global.dim1 <- 0
