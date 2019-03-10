@@ -59,12 +59,12 @@ ds.rowColCalc = function(x=NULL, operation=NULL, newobj=NULL, datasources=NULL){
   
   # we want to deal only with two dimensional tables
   dim2 <- c()
+  dims <- datashield.aggregate(datasources, paste0("dim(", x, ")"))
   for(i in 1:numsources){
-    dims <- datashield.aggregate(datasources[i], paste0("dim(", x, ")"))
-    if(length(dims[[1]]) != 2){
+    if(length(dims[[i]]) != 2){
       stop("The input table in ", stdnames[i]," has more than two dimensions. Only strutures of two dimensions are allowed", call.=FALSE)
     }
-    dim2 <- append(dim2, dims[[1]][2])
+    dim2 <- append(dim2, dims[[i]][2])
   }
   
   # check that, for each study,  all the columns of the input table are of 'numeric' type
