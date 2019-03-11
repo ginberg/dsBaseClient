@@ -34,7 +34,7 @@ ds.isValid = function(x=NULL, datasources=NULL){
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- findDSConnections()
+    datasources <- datashield.connections_find()
   }
   
   if(is.null(x)){

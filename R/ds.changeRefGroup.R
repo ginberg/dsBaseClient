@@ -66,7 +66,7 @@ ds.changeRefGroup = function(x=NULL, ref=NULL, newobj=NULL, reorderByRef=FALSE, 
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- findDSConnections()
+    datasources <- datashield.connections_find()
   }
   
   if(is.null(x)){

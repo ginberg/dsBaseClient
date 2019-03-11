@@ -52,7 +52,7 @@ ds.recodeLevels <- function(x=NULL, newCategories=NULL, newobj=NULL, datasources
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- findDSConnections()
+    datasources <- datashield.connections_find()
   }
   
   if(is.null(x)){

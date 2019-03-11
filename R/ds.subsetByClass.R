@@ -55,7 +55,7 @@ ds.subsetByClass <- function(x=NULL, subsets="subClasses", variables=NULL, datas
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- findDSConnections()
+    datasources <- datashield.connections_find()
   }
   
   if(is.null(x)){

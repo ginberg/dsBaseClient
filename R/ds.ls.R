@@ -38,7 +38,7 @@ ds.ls <- function(datasources=NULL){
   
   # look for DS connections
   if(is.null(datasources)){
-    datasources <- findDSConnections()
+    datasources <- datashield.connections_find()
   }
   
   # call the server side function that does the job
