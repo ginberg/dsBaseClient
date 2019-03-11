@@ -13,7 +13,13 @@ Authors@R:
       person(given = "Julia",
              family = "Isaeva",
              role = "ctb",
-             comment = c(ORCID = "0000-0003-4926-1220")))
+             comment = c(ORCID = "0000-0003-4926-1220")),
+      person(given = "Stuart",
+             family = "Weather",
+             role = "ctb"),
+      person(given = "Demetris",
+             family = "Avraam",
+             role = "ctb"))
 Title: DataSHIELD Base Functions
 Description: DataSHIELD base functions for the client site. 
     DataSHIELD is an infrastructure and series of R packages that 
