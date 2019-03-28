@@ -84,7 +84,7 @@ ds.summary <- function(x=NULL, datasources=NULL){
   }
   
   if (typ == "character") {
-    validity <- datashield.aggregate(datasources[i], as.symbol(paste0('isValidDS(', x, ')')))
+    validity <- datashield.aggregate(datasources, as.symbol(paste0('isValidDS(', x, ')')))
     l <- datashield.aggregate(datasources[validity == TRUE], as.symbol(paste0('length(', x, ')' )))
     for (i in 1:length(datasources[validity == TRUE])) {
       finalOutput[[i]] <- list('class'=typ, 'length'=l[[i]])
