@@ -31,7 +31,7 @@ test_that("names_erros", {
 
 context("dsClient::ds.names()")
 
-# ds.subsetByClass(datasources=opals, subsets='subclasses', x='D')
+# ds.subsetByClass(datasources=conns, subsets='subclasses', x='D')
 # names <- ds.names('subclasses')
 # expected_names <- c("DIS_DIAB.level_0", "DIS_DIAB.level_1", "GENDER.level_0",   "GENDER.level_1")
 # test_that("level_names", {

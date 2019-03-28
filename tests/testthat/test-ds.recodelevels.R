@@ -22,7 +22,7 @@ source("setup.R")
 #
 
 # context("dsClient::ds.recodeLevels()")
-# ds.recodeLevels(opals, x='D$PM_BMI_CATEGORICAL', newCategories=c('normal', 'overweight', 'obesity'), newobj='bmi_new')
+# ds.recodeLevels(conns, x='D$PM_BMI_CATEGORICAL', newCategories=c('normal', 'overweight', 'obesity'), newobj='bmi_new')
 # levels <- ds.levels(x='bmi_new')
 # test_that("new levels", {
 #   expected <- c("normal", "overweight", "obesity")
@@ -31,7 +31,7 @@ source("setup.R")
 #   expect_equal(levels$sim3, expected)
 # })
 
-# context("dsClient::ds.recodeLevels() no opals or newobj")
+# context("dsClient::ds.recodeLevels() no conns or newobj")
 # ds.recodeLevels(x='D$PM_BMI_CATEGORICAL', newCategories=c('normal', 'overweight', 'obesity'))
 # levels <- ds.levels(x='PM_BMI_CATEGORICAL_new')
 # test_that("new levels auto", {

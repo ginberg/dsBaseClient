@@ -22,7 +22,7 @@ source("setup.R")
 #
 
 context("dsClient::ds.table2D() generate a two dimensional table, outputting combined contingency tables - default behaviour")
-res <- ds.table2D(datasources=opals, x='D$DIS_DIAB', y='D$GENDER')
+res <- ds.table2D(datasources=conns, x='D$DIS_DIAB', y='D$GENDER')
 #print(res)
 test_that("DIS_DIAB_GENDER", {
     expect_equal(res$validity, "All tables are valid!")
@@ -32,7 +32,7 @@ test_that("DIS_DIAB_GENDER", {
 })
 
 context("dsClient::ds.table2D() generate a two dimensional table, outputting study specific contingency tables")
-res <- ds.table2D(datasources=opals, x='D$DIS_DIAB', y='D$GENDER', type="split")
+res <- ds.table2D(datasources=conns, x='D$DIS_DIAB', y='D$GENDER', type="split")
 #print(res)
 test_that("DIS_DIAB_GENDER_split", {
     expect_equal(res$validity, "All tables are valid!")
@@ -44,7 +44,7 @@ test_that("DIS_DIAB_GENDER_split", {
 })
 
 context("dsClient::ds.table2D() generate a two dimensional table, outputting study specific contingency tables for the first two studies")
-res <- ds.table2D(datasources=opals[1:2], 'D$DIS_DIAB', 'D$GENDER', type="split")
+res <- ds.table2D(datasources=conns[1:2], 'D$DIS_DIAB', 'D$GENDER', type="split")
 #print(res)
 test_that("DIS_DIAB_GENDER_split_12", {
     expect_equal(res$validity, "All tables are valid!")
@@ -56,7 +56,7 @@ test_that("DIS_DIAB_GENDER_split_12", {
 })
 
 # context("dsClient::ds.table2D() generate a two dimensional table, outputting combined contingency tables (in this case some studies are invalid)")
-# res <- ds.table2D(datasources=opals, 'D$DIS_CVA', 'D$GENDER')
+# res <- ds.table2D(datasources=conns, 'D$DIS_CVA', 'D$GENDER')
 # #print(res)
 # test_that("DIS_CVA_GENDER_split_invalid", {
 #     expect_equal(res$validity, "Invalid contingency table from 'sim2, sim3'!")

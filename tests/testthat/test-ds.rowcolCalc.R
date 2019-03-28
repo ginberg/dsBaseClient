@@ -22,7 +22,7 @@ source("setup.R")
 #
 
 context("dsbaseclient::ds.rowcolCalc()")
-opal::datashield.assign(opals, "hdl_tsc", quote(data.frame(cbind(D$LAB_HDL, D$LAB_TSC))))
+datashield.assign(conns, "hdl_tsc", quote(data.frame(cbind(D$LAB_HDL, D$LAB_TSC))))
 ds.rowColCalc(x='D', operation="rowSums", newobj="rsum_hdl_tsc")
 res <- ds.exists('rsum_hdl_tsc')
 test_that("rowColCalc_exists", {
@@ -32,7 +32,7 @@ test_that("rowColCalc_exists", {
 })
 
 context("dsbaseclient::ds.rowcolCalc() no newobj")
-opal::datashield.assign(opals, "hdl_tsc", quote(data.frame(cbind(D$LAB_HDL, D$LAB_TSC))))
+datashield.assign(conns, "hdl_tsc", quote(data.frame(cbind(D$LAB_HDL, D$LAB_TSC))))
 ds.rowColCalc(x='D', operation="rowSums")
 res <- ds.exists('rowColCalc_out')
 test_that("rowColCalc_out_exists", {

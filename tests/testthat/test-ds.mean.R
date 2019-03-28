@@ -40,7 +40,7 @@ test_that("mean values [combine] loose", {
 
 context("dsClient::ds.mean(type=split)")
 
-stat.mean <- ds.mean(datasources=opals, x='D$LAB_TSC', type='split')
+stat.mean <- ds.mean(datasources=conns, x='D$LAB_TSC', type='split')
 #print(stat.mean)
 test_that("mean values [split]", {
   expect_false(is.na(stat.mean$sim1))

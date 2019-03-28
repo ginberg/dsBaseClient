@@ -12,22 +12,26 @@
 #
 
 library(dsBaseClient)
-library(DSOpal)
+library(DSLite)
 library(testthat)
 
-options(verbose=FALSE)
+if (!requireNamespace("dsBase", quietly = TRUE)) {
+  stop("dsBase package is required in the local R installation for the execution of the tests.",
+       call. = FALSE)
+}
 
-options(opal.username='administrator',
-        opal.password='password')
-
-options(opal.url='http://localhost:8080')
-#options(opal.url='https://opal-demo.obiba.org')
+data("CNSIM1")
+data("CNSIM2")
+data("CNSIM3")
+testServ <- newDSLiteServer(tables=list(CNSIM1=CNSIM1, CNSIM2=CNSIM2, CNSIM3=CNSIM3))
+options(datashield.env=environment())
 
 server <- c("sim1", "sim2", "sim3")
-url <- c(getOption("opal.url"), getOption("opal.url"), getOption("opal.url"))
-user <- c(getOption("opal.username"), getOption("opal.username"), getOption("opal.username"))
-password <- c(getOption("opal.password"), getOption("opal.password"), getOption("opal.password"))
-table <- c("datashield.CNSIM1", "datashield.CNSIM2", "datashield.CNSIM3")
-logindata <- data.frame(server,url,user,password,table)
+driver <- rep("DSLiteDriver", 3)
+url <- rep("testServ", 3)
+user <- rep("", 3)
+password <- rep("", 3)
+table <- c("CNSIM1", "CNSIM2", "CNSIM3")
+logindata <- data.frame(server, driver, url, user, password, table)
 
-conns <- datashield.login(logins=logindata,assign=TRUE,variables=getOption("datashield.variables", NULL))
+conns <- datashield.login(logins=logindata,assign=TRUE)

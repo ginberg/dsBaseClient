@@ -30,7 +30,10 @@ Depends:
     DSI
 Imports:
     stats
-Suggests: knitr
+Suggests: 
+    knitr,
+    DSLite,
+    dsBase
 License: GPL-3
 URL: http://datashield.ac.uk
 BugReports: https://github.com/datashield/dsBaseClient
