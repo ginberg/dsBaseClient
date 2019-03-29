@@ -15,23 +15,21 @@ library(dsBaseClient)
 library(DSLite)
 library(testthat)
 
+# check server-side package is installed
 if (!requireNamespace("dsBase", quietly = TRUE)) {
   stop("dsBase package is required in the local R installation for the execution of the tests.",
        call. = FALSE)
 }
 
+# load simulated test datasets and corresponding login definition
 data("CNSIM1")
 data("CNSIM2")
 data("CNSIM3")
-testServ <- newDSLiteServer(tables=list(CNSIM1=CNSIM1, CNSIM2=CNSIM2, CNSIM3=CNSIM3))
+data("logindata.dslite.cnsim")
+
+# new DSLiteServer, hosting the simulated test datasets
+dslite.server <- newDSLiteServer(tables=list(CNSIM1=CNSIM1, CNSIM2=CNSIM2, CNSIM3=CNSIM3))
+logindata <- logindata.dslite.cnsim
 options(datashield.env=environment())
 
-server <- c("sim1", "sim2", "sim3")
-driver <- rep("DSLiteDriver", 3)
-url <- rep("testServ", 3)
-user <- rep("", 3)
-password <- rep("", 3)
-table <- c("CNSIM1", "CNSIM2", "CNSIM3")
-logindata <- data.frame(server, driver, url, user, password, table)
-
-conns <- datashield.login(logins=logindata,assign=TRUE)
+conns <- datashield.login(logins=logindata, assign=TRUE)
