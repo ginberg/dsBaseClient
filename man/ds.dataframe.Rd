@@ -43,7 +43,7 @@ created (i.e. a data frame that holds missing values only - NA).
 \dontrun{
   
   # load the file that contains the login details
-  data(logindata)
+  logindata <- DSLite::setupCNSIMTest("dsBase")
 
   # login and assign the required variables to R
   myvar <- list('LAB_TSC','LAB_HDL')

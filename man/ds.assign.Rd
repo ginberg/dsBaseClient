@@ -30,7 +30,7 @@ If no name is provided, the new object is named 'newObject', by default.
 \dontrun{
 
   # load that contains the login details
-  data(logindata)
+  logindata <- DSLite::setupCNSIMTest("dsBase")
 
   # login and assign specific variable(s)
   # (by default the assigned dataset is a dataframe named 'D')

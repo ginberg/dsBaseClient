@@ -28,7 +28,7 @@ see details of the R base function \code{cbind}.
 \dontrun{
 
   # load the file that contains the login details
-  data(logindata)
+  logindata <- DSLite::setupCNSIMTest("dsBase")
 
   # login and assign specific variables(s)
   # (by default the assigned dataset is a dataframe named 'D')

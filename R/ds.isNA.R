@@ -14,7 +14,7 @@
 #' @examples \dontrun{
 #' 
 #'   # load the login data
-#'   data(logindata)
+#'   logindata <- DSLite::setupCNSIMTest("dsBase")
 #' 
 #'   # login and assign specific variable(s)
 #'   myvar <- list("LAB_HDL")

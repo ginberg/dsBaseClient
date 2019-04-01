@@ -29,7 +29,7 @@ because they are potentially disclosive.
 \dontrun{
 
   # load that contains the login details
-  data(logindata)
+  logindata <- DSLite::setupCNSIMTest("dsBase")
 
   # login and assign specific variable(s)
   myvar <- list('LAB_HDL')

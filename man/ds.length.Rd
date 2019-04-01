@@ -29,7 +29,7 @@ each study.
 \dontrun{
 
   # load that contains the login details
-  data(logindata)
+  logindata <- DSLite::setupCNSIMTest("dsBase")
 
   # login and assign all the variables stored on the server side
   conns <- datashield.login(logins=logindata,assign=TRUE)

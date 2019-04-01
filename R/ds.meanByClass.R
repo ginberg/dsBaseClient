@@ -28,7 +28,7 @@
 #' \dontrun{
 #' 
 #'   # load that contains the login details
-#'   data(logindata)
+#'   logindata <- DSLite::setupCNSIMTest("dsBase")
 #' 
 #'   # Example 1: calculate the pooled mean proportion for LAB_HDL across GENDER categories 
 #'   # where both vectors are in a tabe structure "D"

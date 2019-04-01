@@ -22,7 +22,7 @@
 #' @examples \dontrun{
 #'   library(DSI)
 #'   # load that contains the login details
-#'   data(logindata)
+#'   logindata <- DSLite::setupCNSIMTest("dsBase")
 #'   
 #'   # login and assign all the stored variable(s)
 #'   # (by default the assigned dataset is a dataframe named 'D')

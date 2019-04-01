@@ -28,7 +28,7 @@ is given for each study separately.
 \dontrun{
 
   # load the login data
-  data(logindata)
+  logindata <- DSLite::setupCNSIMTest("dsBase")
 
   # login and assign all the variable held in the data repository
   conns <- datashield.login(logins=logindata,assign=TRUE)

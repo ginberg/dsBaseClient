@@ -29,7 +29,7 @@ function loops through that list to concatenate the list's elements into a vecto
 \dontrun{
 
   # load the file that contains the login details
-  data(logindata)
+  logindata <- DSLite::setupCNSIMTest("dsBase")
 
   # login and assign specific variable(s)
   # (by default the assigned dataset is a dataframe named 'D')

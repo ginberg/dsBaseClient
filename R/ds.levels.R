@@ -11,7 +11,7 @@
 #' @examples \dontrun{
 #' 
 #'   # load that contains the login details
-#'   data(logindata)
+#'   logindata <- DSLite::setupCNSIMTest("dsBase")
 #' 
 #'   # login
 #'   conns <- datashield.login(logins=logindata,assign=TRUE)

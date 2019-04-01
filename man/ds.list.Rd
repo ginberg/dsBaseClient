@@ -28,7 +28,7 @@ or a dataframe the names of the elements in the list are the names of columns.
 \dontrun{
 
  # load the file that contains the login details
- data(logindata)
+ logindata <- DSLite::setupCNSIMTest("dsBase")
 
  # login and assign the required variables to R
  myvar <- list("LAB_TSC","LAB_HDL")

@@ -27,7 +27,7 @@ The number of missing entries are counted and the total for each study is return
 \dontrun{
 
   # load that contains the login details
-  data(logindata)
+  logindata <- DSLite::setupCNSIMTest("dsBase")
 
   # login and assign all the stored variables.
   conns <- datashield.login(logins=logindata,assign=TRUE)

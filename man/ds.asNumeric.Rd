@@ -27,7 +27,7 @@ See details of the R function 'as.numeric'.
 \dontrun{
 
   # load that contains the login details
-  data(logindata)
+  logindata <- DSLite::setupCNSIMTest("dsBase")
 
   # login and assign specific variable(s)
   # (by default the assigned dataset is a dataframe named 'D')

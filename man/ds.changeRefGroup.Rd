@@ -40,7 +40,7 @@ can render the results of operations on that table invalid.
 \dontrun{
 
   # load that contains the login details
-  data(logindata)
+  logindata <- DSLite::setupCNSIMTest("dsBase")
 
   # login and assign all the stored variables
   # (by default the assigned dataset is a dataframe named 'D')

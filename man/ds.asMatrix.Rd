@@ -28,7 +28,7 @@ is valid (i.e. has a number of rows greater than the minimal number of observati
 \dontrun{
 
   # load that contains the login details
-  data(logindata)
+  logindata <- DSLite::setupCNSIMTest("dsBase")
 
   # login and assign all the stored variable(s)
   # (by default the assigned dataset is a dataframe named 'D')

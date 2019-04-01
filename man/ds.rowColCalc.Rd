@@ -33,7 +33,7 @@ revealing i.e. if the number of rows is less than the allowed number of observat
 \dontrun{
 
   # load that contains the login details
-  data(logindata)
+  logindata <- DSLite::setupCNSIMTest("dsBase")
 
   # login and assign two variables
   myvar  <-  list("LAB_TSC","LAB_HDL")

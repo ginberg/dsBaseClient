@@ -35,7 +35,7 @@ a subset is empty (i.e. no entries) the name of the subset is labelled with the 
 \dontrun{
 
   # load the login data
-  data(logindata)
+  logindata <- DSLite::setupCNSIMTest("dsBase")
 
   # login and assign some variables to R
   myvar <- list('DIS_DIAB','PM_BMI_CONTINUOUS','LAB_HDL', 'GENDER')

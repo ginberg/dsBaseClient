@@ -36,7 +36,7 @@
 #' \dontrun{
 #' 
 #'   # load the file that contains the login details
-#'   data(logindata)
+#'   logindata <- DSLite::setupCNSIMTest("dsBase")
 #' 
 #'   # login and assign all the variables to R
 #'   conns <- datashield.login(logins=logindata,assign=TRUE)
