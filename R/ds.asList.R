@@ -19,7 +19,7 @@
 #' @seealso \link{ds.asCharacter} to turn a variable into a character type.
 #' @seealso \link{ds.asMatrix} to coerce an object into a matrix type.
 #' @export
-#' @examples \dontrun{
+#' @examples \donttest{
 #'   library(DSI)
 #'   # load that contains the login details
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")

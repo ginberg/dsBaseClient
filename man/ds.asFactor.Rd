@@ -26,7 +26,7 @@ Unlike the R function 'as.factor' vectors where some levels have less than 2 obs
 are not allow, an empty vector (i.e. all values within it are set to NA) is then generated.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load that contains the login details
   logindata <- DSLite::setupCNSIMTest("dsBase")

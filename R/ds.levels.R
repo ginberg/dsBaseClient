@@ -8,7 +8,7 @@
 #' @return levels of x
 #' @author Gaye, A.; Isaeva, J.
 #' @export
-#' @examples \dontrun{
+#' @examples \donttest{
 #' 
 #'   # load that contains the login details
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")
@@ -20,7 +20,7 @@
 #'   ds.levels(x='D$PM_BMI_CATEGORICAL')
 #' 
 #'   # Example 2: Get the levels of the LAB_TSC   SHOULD NOT WORK AS IT IS A CONTINUOUS VARIABLE
-#'   \dontrun{ ds.levels(x='D$LAB_TSC') }
+#'   \donttest{ ds.levels(x='D$LAB_TSC') }
 #' 
 #'   # clear the Datashield R sessions and logout
 #'   datashield.logout(conns)

@@ -30,7 +30,7 @@ The results of calculation are not returned to the user if they are potentially
 revealing i.e. if the number of rows is less than the allowed number of observations.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load that contains the login details
   logindata <- DSLite::setupCNSIMTest("dsBase")

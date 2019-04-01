@@ -37,7 +37,7 @@ into a table that is not reordered in the same way. Such mismatch
 can render the results of operations on that table invalid.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load that contains the login details
   logindata <- DSLite::setupCNSIMTest("dsBase")

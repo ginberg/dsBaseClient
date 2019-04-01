@@ -28,7 +28,7 @@
 #' @author Gaye, A.; Burton, P.
 #' @seealso \link{ds.table2D} for cross-tabulating two vectors.
 #' @export
-#' @examples \dontrun{
+#' @examples \donttest{
 #' 
 #'   # load the file that contains the login details
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")

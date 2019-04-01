@@ -13,7 +13,7 @@
 #' @return  a boolean, TRUE if input object is valid and FALSE otherwise.
 #' @author Gaye, A.
 #' @export
-#' @examples \dontrun{
+#' @examples \donttest{
 #' 
 #'   # load that contains the login details
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")

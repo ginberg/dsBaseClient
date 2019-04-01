@@ -9,7 +9,7 @@
 #' @author Gaye, A.; Isaeva, J.
 #' @seealso \link{ds.exists} to verify if an object is defined (exists) on the server side.
 #' @export
-#' @examples \dontrun{
+#' @examples \donttest{
 #' 
 #'   # load that contains the login details
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")

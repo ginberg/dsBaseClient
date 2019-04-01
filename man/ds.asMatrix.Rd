@@ -25,7 +25,7 @@ Unlike the R function 'as.matrix' the output matrix is generated only if the inp
 is valid (i.e. has a number of rows greater than the minimal number of observations allowed).
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load that contains the login details
   logindata <- DSLite::setupCNSIMTest("dsBase")

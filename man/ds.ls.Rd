@@ -26,7 +26,7 @@ this function, the DataSHIELD version does not allow to specify another environm
 names of objects on the 'current' environment can be displayed.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load the file that contains the login details
   logindata <- DSLite::setupCNSIMTest("dsBase")

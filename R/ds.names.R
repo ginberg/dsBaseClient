@@ -8,7 +8,7 @@
 #' @return The names of the list's elements for each study
 #' @author Gaye, A.
 #' @export
-#' @examples \dontrun{
+#' @examples \donttest{
 #' 
 #'   # load the login data
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")

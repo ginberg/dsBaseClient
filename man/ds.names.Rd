@@ -21,7 +21,7 @@ This function is similar to the R function \code{names}.
 In DataSHIELD the use of this function is restricted to objects of type list.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load the login data
   logindata <- DSLite::setupCNSIMTest("dsBase")

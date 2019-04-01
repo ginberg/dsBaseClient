@@ -27,7 +27,7 @@
 #' @seealso \link{ds.meanByClass} to compute mean and standard deviation across categories of a factor vectors.
 #' @export
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #'
 #'   # load the login data
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")

@@ -44,7 +44,7 @@ count. This way it is possible the know the total count and combine total counts
 is not possible to identify the cell(s) that had the small counts which render the table invalid.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load the file that contains the login details
   logindata <- DSLite::setupCNSIMTest("dsBase")

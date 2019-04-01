@@ -27,7 +27,7 @@ This function is similar to R function \code{log}.
 this is simply a wrapper for the server side function.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load that contains the login details
   logindata <- DSLite::setupCNSIMTest("dsBase")

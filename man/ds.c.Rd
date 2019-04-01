@@ -26,7 +26,7 @@ on the client side, the names are coerce into a list and the server side
 function loops through that list to concatenate the list's elements into a vector.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load the file that contains the login details
   logindata <- DSLite::setupCNSIMTest("dsBase")

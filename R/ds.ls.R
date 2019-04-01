@@ -14,7 +14,7 @@
 #' environment of the remote R session.
 #' @author Gaye, A.
 #' @export
-#' @examples \dontrun{
+#' @examples \donttest{
 #' 
 #'   # load the file that contains the login details
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")

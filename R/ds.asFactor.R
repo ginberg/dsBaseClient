@@ -17,7 +17,7 @@
 #' @seealso \link{ds.asMatrix} to coerce an object into a matrix type.
 #' @export
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' 
 #'   # load that contains the login details
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")

@@ -30,7 +30,7 @@ It can for example be used to merge two classes into one, to add a level(s) to a
 or to rename (i.e. re-label) the levels of a vector.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load that contains the login details
   logindata <- DSLite::setupCNSIMTest("dsBase")

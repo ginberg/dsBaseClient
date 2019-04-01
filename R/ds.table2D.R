@@ -33,7 +33,7 @@
 #' @seealso \link{ds.table1D} for the tabulating one vector.
 #' @export
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' 
 #'   # load the file that contains the login details
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")

@@ -34,7 +34,7 @@ at any one entry (i.e. observation), the operation returns a missing value ('NA'
 vectors has, hence the same length as the input vectors.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load the file that contains the login details
   logindata <- DSLite::setupCNSIMTest("dsBase")

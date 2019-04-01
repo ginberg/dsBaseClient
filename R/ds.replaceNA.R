@@ -23,7 +23,7 @@
 #' @return a new vector or table structure with the same class is stored on the server site.
 #' @author Gaye, A.
 #' @export
-#' @examples \dontrun{
+#' @examples \donttest{
 #' 
 #'   # load that contains the login details
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")

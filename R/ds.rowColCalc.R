@@ -14,7 +14,7 @@
 #' @return nothing is returned to the client, the new object is stored on the server side.
 #' @export
 #' @author Gaye, A.
-#' @examples \dontrun{
+#' @examples \donttest{
 #' 
 #'   # load that contains the login details
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")

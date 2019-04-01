@@ -21,7 +21,7 @@ This function is similar to R function \code{levels}
 This is just a wrapper function for the server side function.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load that contains the login details
   logindata <- DSLite::setupCNSIMTest("dsBase")
@@ -33,7 +33,7 @@ This is just a wrapper function for the server side function.
   ds.levels(x='D$PM_BMI_CATEGORICAL')
 
   # Example 2: Get the levels of the LAB_TSC   SHOULD NOT WORK AS IT IS A CONTINUOUS VARIABLE
-  \dontrun{ ds.levels(x='D$LAB_TSC') }
+  \donttest{ ds.levels(x='D$LAB_TSC') }
 
   # clear the Datashield R sessions and logout
   datashield.logout(conns)

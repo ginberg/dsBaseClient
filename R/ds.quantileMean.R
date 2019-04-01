@@ -14,7 +14,7 @@
 #' @seealso \code{ds.mean} to compute statistical mean.
 #' @seealso \code{ds.summary} to generate the summary of a variable.
 #' @export
-#' @examples \dontrun{
+#' @examples \donttest{
 #' 
 #'   # load that contains the login details
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")

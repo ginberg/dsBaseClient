@@ -40,7 +40,7 @@ the minimum allowed number of observation in DataSHIELD), an empty data frame is
 created (i.e. a data frame that holds missing values only - NA).
 }
 \examples{
-\dontrun{
+\donttest{
   
   # load the file that contains the login details
   logindata <- DSLite::setupCNSIMTest("dsBase")

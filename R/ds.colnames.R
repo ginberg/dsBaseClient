@@ -9,7 +9,7 @@
 #' @author Gaye, A.; Isaeva, J.
 #' @seealso \link{ds.dim} to obtain the dimensions of matrix or a data frame.
 #' @export
-#' @examples \dontrun{
+#' @examples \donttest{
 #' 
 #'   # load that contains the login details
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")

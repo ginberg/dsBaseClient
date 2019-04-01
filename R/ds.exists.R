@@ -13,7 +13,7 @@
 #' @author Gaye, A.
 #' @seealso \link{ds.class} to check the type of an object.
 #' @export
-#' @examples \dontrun{
+#' @examples \donttest{
 #' 
 #'   # load the file that contains the login details
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")

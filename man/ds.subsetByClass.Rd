@@ -32,7 +32,7 @@ the number of observations it holds are between 1 and the threshold allowed by t
 a subset is empty (i.e. no entries) the name of the subset is labelled with the suffix '_EMPTY'.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load the login data
   logindata <- DSLite::setupCNSIMTest("dsBase")

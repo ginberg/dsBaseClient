@@ -12,7 +12,7 @@
 #' @return the returned information depends on the class of the objects.
 #' @author Gaye, A.
 #' @export
-#' @examples \dontrun{
+#' @examples \donttest{
 #' 
 #'   # load the login data
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")

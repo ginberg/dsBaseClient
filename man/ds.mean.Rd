@@ -25,7 +25,7 @@ This function is similar to the R function \code{mean}.
 It is a wrapper for the server side function.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load that contains the login details
   logindata <- DSLite::setupCNSIMTest("dsBase")

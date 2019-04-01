@@ -12,7 +12,7 @@
 #' @seealso \code{ds.quantileMean} to compute quantiles.
 #' @seealso \code{ds.summary} to generate the summary of a variable.
 #' @export
-#' @examples \dontrun{
+#' @examples \donttest{
 #' 
 #'   # load that contains the login details
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")

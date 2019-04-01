@@ -15,7 +15,7 @@
 #' @seealso \link{ds.asList} to construct an object of type list.
 #' @export
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' 
 #'   # load that contains the login details
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")

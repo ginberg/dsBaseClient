@@ -25,7 +25,7 @@ such as the minimum and maximum values of numeric vectors are not returned. The 
 is given for each study separately.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load the login data
   logindata <- DSLite::setupCNSIMTest("dsBase")

@@ -24,7 +24,7 @@ This function is similar to R function \code{as.character}.
 See details of the R function 'as.character'.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load that contains the login details
   logindata <- DSLite::setupCNSIMTest("dsBase")

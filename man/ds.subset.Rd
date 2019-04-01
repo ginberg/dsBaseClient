@@ -45,7 +45,7 @@ IMPORTANT NOTE: If the requested subset is not valid (i.e. contains less than th
 turned into missing values (NA). Hence an invalid subset is indicated by the fact that all values within it are set to NA.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load the login data
   logindata <- DSLite::setupCNSIMTest("dsBase")

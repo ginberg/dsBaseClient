@@ -25,7 +25,7 @@ This function is similar to R function \code{exp}.
 this is a wrapper that calls the exponential function on the server site.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load that contains the login details
   logindata <- DSLite::setupCNSIMTest("dsBase")

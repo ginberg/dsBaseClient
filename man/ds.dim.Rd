@@ -27,7 +27,7 @@ study. Unlike the other DataSHIELD function the default behaviour is to output t
 of each study separately.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load that contains the login details
   logindata <- DSLite::setupCNSIMTest("dsBase")
@@ -43,7 +43,7 @@ of each study separately.
 
   # Example 2: Input has to be either matrix, data frame or an array
   # In the below example, the inpout is a vector so it will not work.
-  \dontrun{ ds.dim(x='D$LAB_TSC') }
+  \donttest{ ds.dim(x='D$LAB_TSC') }
 
   # clear the Datashield R sessions and logout
   datashield.logout(conns)

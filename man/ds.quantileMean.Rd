@@ -26,7 +26,7 @@ Unlike standard r summary function the minimum and maximum values afe not return
 because they are potentially disclosive.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load that contains the login details
   logindata <- DSLite::setupCNSIMTest("dsBase")

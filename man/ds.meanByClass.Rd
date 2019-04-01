@@ -39,7 +39,7 @@ only for the studies of the user really interested in but including only those s
 parameter 'datasources'.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load that contains the login details
   logindata <- DSLite::setupCNSIMTest("dsBase")

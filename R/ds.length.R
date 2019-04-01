@@ -13,7 +13,7 @@
 #' @author Gaye, A.
 #' @export
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' 
 #'   # load that contains the login details
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")

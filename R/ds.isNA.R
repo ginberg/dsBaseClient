@@ -11,7 +11,7 @@
 #' @return a boolean 'TRUE' if the vector is empty (all values are 'NA') and 'FALSE'  otherwise.
 #' @author Gaye, A.
 #' @export
-#' @examples \dontrun{
+#' @examples \donttest{
 #' 
 #'   # load the login data
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")

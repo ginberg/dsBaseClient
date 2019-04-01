@@ -19,7 +19,7 @@
 #' @seealso \link{ds.subset} to subset by complete cases (i.e. removing missing values), threshold, columns and rows.
 #' @export
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #'
 #'   # load the login data
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")

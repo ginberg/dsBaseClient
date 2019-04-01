@@ -26,7 +26,7 @@ The function returns the pooled length or the length of the a vector or a list f
 each study.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load that contains the login details
   logindata <- DSLite::setupCNSIMTest("dsBase")

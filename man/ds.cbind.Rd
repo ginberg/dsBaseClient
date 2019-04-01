@@ -25,7 +25,7 @@ that  it allows to combine up to 5 objects (vectors and/or table structures).
 see details of the R base function \code{cbind}.
 }
 \examples{
-\dontrun{
+\donttest{
 
   # load the file that contains the login details
   logindata <- DSLite::setupCNSIMTest("dsBase")

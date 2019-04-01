@@ -11,7 +11,7 @@
 #' @return for an array, \code{NULL} or a vector of mode \code{integer}
 #' @author Gaye, A.
 #' @export
-#' @examples \dontrun{
+#' @examples \donttest{
 #' 
 #'   # load that contains the login details
 #'   logindata <- DSLite::setupCNSIMTest("dsBase")
