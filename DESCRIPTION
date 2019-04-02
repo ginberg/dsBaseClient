@@ -23,9 +23,7 @@ Authors@R:
 Title: DataSHIELD Base Functions
 Description: DataSHIELD base functions for the client site. 
     DataSHIELD is an infrastructure and series of R packages that 
-    enables the remote and non-disclosive analysis of sensitive research data. 
-    This package defines the API that is to be implemented by DataSHIELD-aware 
-    data repositories.
+    enables the remote and non-disclosive analysis of sensitive research data.
 Depends:
     DSI
 Imports:
