@@ -22,8 +22,8 @@ source("setup.R")
 #
 
 context("dsbaseclient::ds.rowcolCalc()")
-datashield.assign(conns, "hdl_tsc", quote(data.frame(cbind(D$LAB_HDL, D$LAB_TSC))))
-ds.rowColCalc(x='D', operation="rowSums", newobj="rsum_hdl_tsc")
+ds.dataframe(x=c('D$LAB_HDL', 'D$LAB_TSC'), newobj = "hdl_tsc")
+ds.rowColCalc(x='hdl_tsc', operation="rowSums", newobj="rsum_hdl_tsc")
 res <- ds.exists('rsum_hdl_tsc')
 test_that("rowColCalc_exists", {
     expect_true(res$sim1)
@@ -32,8 +32,8 @@ test_that("rowColCalc_exists", {
 })
 
 context("dsbaseclient::ds.rowcolCalc() no newobj")
-datashield.assign(conns, "hdl_tsc", quote(data.frame(cbind(D$LAB_HDL, D$LAB_TSC))))
-ds.rowColCalc(x='D', operation="rowSums")
+ds.dataframe(x=c('D$LAB_HDL', 'D$LAB_TSC'), newobj = "hdl_tsc")
+ds.rowColCalc(x='hdl_tsc', operation="rowSums")
 res <- ds.exists('rowColCalc_out')
 test_that("rowColCalc_out_exists", {
     expect_true(res$sim1)
@@ -42,10 +42,11 @@ test_that("rowColCalc_out_exists", {
 })
 
 context("dsClient::ds.rowColCalc() test errors")
+ds.dataframe(x=c('D$LAB_HDL', 'D$LAB_TSC'), newobj = "hdl_tsc")
 test_that("rowColCalc_errors", {
     expect_error(ds.rowColCalc(), "Please provide the name of a data.frame or matrix!", fixed=TRUE)
-    expect_error(ds.rowColCalc(x='D', newobj="rsum_hdl_tsc"), "'operation' = NULL. Please set it to 'rowSums', 'colSums', 'rowMeans' or 'colMeans'", fixed=TRUE)
-    expect_error(ds.rowColCalc(x='D', newobj="rsum_hdl_tsc", operation="datashield"), "'operation' must be set to: 'rowSums', 'colSums', 'rowMeans' or 'colMeans'", fixed=TRUE)
+    expect_error(ds.rowColCalc(x='hdl_tsc', newobj="rsum_hdl_tsc"), "'operation' = NULL. Please set it to 'rowSums', 'colSums', 'rowMeans' or 'colMeans'", fixed=TRUE)
+    expect_error(ds.rowColCalc(x='hdl_tsc', newobj="rsum_hdl_tsc", operation="datashield"), "'operation' must be set to: 'rowSums', 'colSums', 'rowMeans' or 'colMeans'", fixed=TRUE)
 })
 
 #
